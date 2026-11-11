@@ -1,0 +1,32 @@
+id: 92357393-03bb-4230-8600-032adad5ccb5
+slug: email-notifications
+
+title: Email Notifications
+
+description: |
+  Send your New Relic alert notifications via email. You can send email notifications to users with or without New Relic accounts.
+
+  [Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#email) to set up an email notification channel and provide fast and consistent ways for the right personnel to be notified about incidents
+
+summary: |
+  Send your New Relic alerts via email
+icon: logo.png
+level: New Relic
+
+authors:
+  - Matan Moser (New Relic)
+  - Ismail Azam (New Relic)
+
+documentation:
+  - name: Email installation docs
+    url: https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#email
+    description: Want to send automated emails when your system meets certain thresholds? Check out our documentation about setting up a workflow that notifies the right teams when an alert is triggered.
+
+keywords:
+  - email
+  - notifications
+  - AIOps
+  - Incident Intelligence
+  - Destinations
+dataSourceIds:
+  - email-notifications

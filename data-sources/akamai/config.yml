@@ -1,0 +1,22 @@
+id: akamai
+displayName: Akamai DataStream 2
+description: |
+  This integration with DataStream 2 captures performance and security logs from your delivery properties to monitor in New Relic.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://techdocs.akamai.com/datastream2/docs/stream-new-relic
+keywords:
+  - akamai
+  - logs
+  - network
+  - security
+  - cdn
+  - featured
+  - newrelic partner
+  - datastream
+categoryTerms:
+  - newrelic partner
+  - logs
+  - network

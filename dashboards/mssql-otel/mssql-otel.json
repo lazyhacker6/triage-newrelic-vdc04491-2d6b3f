@@ -1,0 +1,2076 @@
+{
+  "name": "DB360 SQL Server Monitoring",
+  "description": "Comprehensive SQL Server monitoring dashboard using nrsqlserverreceiver metrics. Covers golden signals, performance, memory, storage, waits, locks, security, transactions, query monitoring, thread pool, tempdb, and Always-On. Multi-instance support via instance variable (service.instance.id).",
+  "pages": [
+    {
+      "name": "Overview - Golden Metrics",
+      "description": "Critical golden metrics for SQL Server health",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Overview - Golden Metrics\n\nKey health indicators at a glance: how many users are connected, whether queries are hitting cache efficiently, how fast batches are processed, and whether deadlocks or blocking are occurring."
+          }
+        },
+        {
+          "title": "User Connections",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.user.connection.count) AS 'Connections' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.user.connection.count' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Buffer Cache Hit %",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.page.buffer_cache.hit_ratio) AS 'Hit %' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.page.buffer_cache.hit_ratio' FACET service.instance.id"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 90
+              },
+              {
+                "alertSeverity": "WARNING",
+                "value": 95
+              }
+            ]
+          }
+        },
+        {
+          "title": "Batch Requests/sec",
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.batch.request.rate) AS 'Batch Requests/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.batch.request.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Process Count by Status",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.process.count) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.process.count' FACET service.instance.id, `process.status` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Deadlocks/sec",
+          "layout": {
+            "column": 5,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.deadlock.rate) AS 'Deadlocks/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.deadlock.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Processes Blocked",
+          "layout": {
+            "column": 9,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.processes.blocked) AS 'Blocked' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.processes.blocked' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Page Life Expectancy (sec)",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.page.life_expectancy) AS 'PLE (s)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.page.life_expectancy' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "CPU Count / Uptime",
+          "layout": {
+            "column": 7,
+            "row": 9,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.cpu.count) AS 'CPUs', latest(sqlserver.computer.uptime) / 86400 AS 'Uptime (days)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName IN ('sqlserver.cpu.count', 'sqlserver.computer.uptime') FACET service.instance.id"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Slow Queries",
+      "description": "Detailed breakdown of the slowest queries",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Slow Queries\n\nDetailed breakdown of the slowest queries ranked by elapsed time, CPU, reads, and memory grants."
+          }
+        },
+        {
+          "title": "Slow Queries Table (by Avg Duration)",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 12,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopQuery SELECT latest(service.instance.id) AS 'Instance', latest(db.query.full_text) AS 'Query', latest(sqlserver.query_hash) AS 'query_hash', latest(db.namespace) AS 'Database', sum(sqlserver.execution_count) AS 'Executions', sum(sqlserver.total_elapsed_time)/sum(sqlserver.execution_count) AS 'Avg Duration (s)', sum(sqlserver.total_worker_time)/sum(sqlserver.execution_count) AS 'Avg CPU (s)', sum(sqlserver.total_logical_reads) AS 'Logical Reads' WHERE service.instance.id IN ({{instance}}) FACET sqlserver.query_hash  "
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Executions Over Time by Database",
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT sum(sqlserver.execution_count) FROM DbServerTopQuery WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, db.namespace TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Average CPU Time by Database",
+          "layout": {
+            "column": 7,
+            "row": 8,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT sum(sqlserver.total_worker_time)/sum(sqlserver.execution_count) AS 'Avg CPU (s)' FROM DbServerTopQuery WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, db.namespace TIMESERIES"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Active Queries",
+      "description": "Real-time snapshot of currently executing sessions",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Active Queries\n\nReal-time snapshot of currently executing sessions: what they are running, what they are waiting on, which sessions are blocking others, and how long they have been waiting."
+          }
+        },
+        {
+          "title": "Active Sessions",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 12,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerQuerySample SELECT latest(service.instance.id) AS 'Instance', latest(sqlserver.query_start) AS 'Start Time', latest(sqlserver.query_hash) AS 'query_hash',  latest(db.namespace) AS 'Database', latest(sqlserver.total_elapsed_time) AS 'Duration (s)', latest(db.query.full_text) AS 'Query', latest(user.name) AS 'User', latest(client.address) AS 'Host', latest(sqlserver.wait_type) AS 'Wait Type', latest(sqlserver.wait_time) AS 'Wait (s)', latest(sqlserver.blocking_session_id) AS 'Blocked By'  WHERE service.instance.id IN ({{instance}}) FACET sqlserver.query_start, sqlserver.session_id"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Wait Time by Type (Active Sessions)",
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerQuerySample SELECT latest(sqlserver.wait_time) AS 'Wait (s)' WHERE service.instance.id IN ({{instance}}) AND sqlserver.wait_type != '' FACET service.instance.id, sqlserver.wait_type TIMESERIES AUTO"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Sessions Over Time by Status",
+          "layout": {
+            "column": 7,
+            "row": 8,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerQuerySample SELECT uniqueCount(sqlserver.session_id) WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, sqlserver.session_status TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Blocked Sessions (with blocking chain)",
+          "layout": {
+            "column": 1,
+            "row": 11,
+            "width": 12,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerQuerySample SELECT latest(service.instance.id) AS 'Instance', latest(sqlserver.wait_type) AS 'Wait Type', latest(sqlserver.wait_resource) AS 'Wait Resource', latest(user.name) AS 'User', latest(sqlserver.blocking_session_id) AS 'Blocked By', latest(sqlserver.wait_time) AS 'Wait (s)', latest(sqlserver.open_transaction_count) AS 'Open Txns', latest(sqlserver.query_hash) AS 'query_hash', latest(sqlserver.query_start) AS 'Start Time', latest(db.query.full_text) AS 'Query' WHERE service.instance.id IN ({{instance}}) AND sqlserver.wait_time > 0 FACET sqlserver.session_id, sqlserver.blocking_session_id  "
+              }
+            ]
+          }
+        },
+        {
+          "title": "Active Sessions by Database",
+          "layout": {
+            "column": 1,
+            "row": 15,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerQuerySample SELECT uniqueCount(sqlserver.session_id) WHERE service.instance.id IN ({{instance}}) AND sqlserver.session_status = 'running' FACET service.instance.id, db.namespace  "
+              }
+            ]
+          }
+        },
+        {
+          "title": "Blocked Sessions Over Time",
+          "layout": {
+            "column": 7,
+            "row": 15,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerQuerySample SELECT uniqueCount(sqlserver.session_id) AS 'Blocked Sessions' WHERE service.instance.id IN ({{instance}}) AND numeric(sqlserver.blocking_session_id) > 0 FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stored Procedures - Overview",
+      "description": "High-level stored procedure performance KPIs",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Stored Procedures - Overview\n\nHigh-level KPIs for stored procedure performance: total active procedures by instance and database, average execution rate per minute, and a ranked table of top procedures by elapsed time, CPU, executions, and logical reads."
+          }
+        },
+        {
+          "title": "Total Active Procedures",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT uniqueCount(sqlserver.procedure_name, db.namespace) as ActiveProcedures WHERE service.instance.id IN ({{instance}}) FACET service.instance.id"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Avg Executions / min",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT rate(sum(sqlserver.procedure_execution_count), 1 minute) as ExecPerMin WHERE service.instance.id IN ({{instance}}) COMPARE WITH 1 hour ago FACET service.instance.id"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Active Procedures by Database",
+          "layout": {
+            "column": 1,
+            "row": 5,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT uniqueCount(sqlserver.procedure_name) WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, db.namespace TIMESERIES"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Executions/min by Procedure",
+          "layout": {
+            "column": 7,
+            "row": 5,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT rate(sum(sqlserver.procedure_execution_count), 1 minute) WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, db.namespace, sqlserver.procedure_name TIMESERIES"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Top Procedures",
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "width": 12,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT latest(sqlserver.procedure_name) AS 'Procedure Name', sum(sqlserver.total_elapsed_time) as TotalElapsedTime, sum(sqlserver.total_worker_time) as TotalCpuTime, sum(sqlserver.procedure_execution_count) as Executions, sum(sqlserver.total_logical_reads) as TotalLogicalReads WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, sqlserver.procedure_id, db.namespace LIMIT 20"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Procedure Breakdown",
+      "description": "Execution, duration, CPU, and resource breakdown per procedure",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Procedure Breakdown\n\nBreakdown of stored procedure activity by database: procedure count, execution share, and elapsed time share per procedure, with a detailed statement-level view of queries executed within each procedure."
+          }
+        },
+        {
+          "title": "Procedures by Database",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT uniqueCount(sqlserver.procedure_name) WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, db.namespace"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Execution Share by Procedure",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT sum(sqlserver.procedure_execution_count) WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, sqlserver.procedure_name, db.namespace"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Elapsed Time Share by Procedure",
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopProcedure SELECT sum(sqlserver.total_elapsed_time) WHERE service.instance.id IN ({{instance}}) FACET service.instance.id, sqlserver.procedure_name, db.namespace"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Statements by Procedure",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 12,
+            "height": 5
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM DbServerTopQuery SELECT latest(service.instance.id) AS 'Instance', latest(sqlserver.procedure_name) AS 'Procedure Name', sum(sqlserver.total_elapsed_time) / sum(sqlserver.execution_count) * 1000 as AvgDurationMs, sum(sqlserver.total_elapsed_time) as TotalElapsedSec, sum(sqlserver.total_worker_time) / sum(sqlserver.total_elapsed_time) * 100 as CpuPct, sum(sqlserver.total_logical_reads) / sum(sqlserver.execution_count) as AvgLogicalReadsPerExec, sum(sqlserver.execution_count) as Executions WHERE service.instance.id IN ({{instance}}) AND sqlserver.procedure_name IS NOT NULL AND sqlserver.procedure_name != '' FACET service.instance.id, sqlserver.procedure_id, db.namespace, db.query.text"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Performance & Compilation",
+      "description": "Compilation, parameterization, and scan performance",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Performance & Compilation\n\nQuery compilation efficiency: how often SQL Server needs to compile new plans, whether it is reusing cached plans, and how often full table scans happen instead of index seeks. High compilations or full scans indicate missing indexes or query issues."
+          }
+        },
+        {
+          "title": "SQL Compilations/sec",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.batch.sql_compilation.rate) AS 'Compilations/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.batch.sql_compilation.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "SQL Recompilations/sec",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.batch.sql_recompilation.rate) AS 'Recompilations/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.batch.sql_recompilation.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Recompilation Ratio %",
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.recompilation.ratio) AS 'Recompile %' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.recompilation.ratio' FACET service.instance.id"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 10
+              }
+            ]
+          }
+        },
+        {
+          "title": "Compilations Per Batch",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.batch.compilation.utilization) AS 'Compilations/Batch' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.batch.compilation.utilization' FACET service.instance.id"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "WARNING",
+                "value": 0.1
+              }
+            ]
+          }
+        },
+        {
+          "title": "Page Splits Per Batch",
+          "layout": {
+            "column": 5,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.batch.page_split.utilization) AS 'Page Splits/Batch' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.batch.page_split.utilization' FACET service.instance.id"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Parameterization by Result",
+          "layout": {
+            "column": 9,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.parameterization.rate) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.parameterization.rate' FACET service.instance.id, `sqlserver.parameterization.result` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Full Scans/sec",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.database.full_scan.rate) AS 'Full Scans/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.database.full_scan.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Index Searches/sec",
+          "layout": {
+            "column": 7,
+            "row": 9,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.index.search.rate) AS 'Index Searches/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.index.search.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Memory & Buffer",
+      "description": "Memory pools, buffer pool, and OS memory",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Memory & Buffer\n\nHow SQL Server uses memory: target vs available, buffer pool allocation across memory pools, and whether memory grant requests are queuing. Memory pressure shows as pending grants or low available memory."
+          }
+        },
+        {
+          "title": "OS Memory Utilization %",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.os.memory.utilization) * 100 AS 'Mem Util %' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.os.memory.utilization' FACET service.instance.id"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 90
+              },
+              {
+                "alertSeverity": "WARNING",
+                "value": 75
+              }
+            ]
+          }
+        },
+        {
+          "title": "OS Disk Size (GB)",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.os.disk.size) / 1073741824 AS 'Disk (GB)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.os.disk.size' FACET service.instance.id"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Memory Grants Pending",
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.memory.grants.pending.count) AS 'Pending' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.memory.grants.pending.count' FACET service.instance.id"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 5
+              },
+              {
+                "alertSeverity": "WARNING",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "title": "Memory Area by Pool (MB)",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.memory.area) / 1048576 AS 'MB' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.memory.area' FACET service.instance.id, `memory.pool`"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Buffer Page Count by Pool",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.memory.page.count) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.memory.page.count' FACET service.instance.id, `page.pool`"
+              }
+            ]
+          }
+        },
+        {
+          "title": "OS Memory Total vs Available (GB)",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.os.memory.usage) / 1073741824 AS 'GB' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.os.memory.usage' FACET service.instance.id, `memory.state`"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Cache Objects",
+          "layout": {
+            "column": 7,
+            "row": 9,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.memory.cache.object.count) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.memory.cache.object.count' FACET service.instance.id, `cache.state`"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Database Storage & IO",
+      "description": "Database file sizes, IO throughput, and latency",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Database Storage & IO\n\nDatabase file sizes, read/write throughput, and IO latency. High latency on writes may indicate disk bottlenecks. Transaction log growth events signal the log is auto-growing, which causes brief pauses."
+          }
+        },
+        {
+          "title": "Database File Size (MB) by Type",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.database.file.size) / 1048576 AS 'MB' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.database.file.size' FACET service.instance.id, `db.namespace`, `file_type` LIMIT 20"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Database IO (Bytes) by Direction & File Type",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.database.io) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.database.io' FACET service.instance.id, `direction`, `file_type` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Database Latency (sec) by Direction & File Type",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 12,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.database.latency) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.database.latency' FACET service.instance.id, `direction`, `file_type` TIMESERIES"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wait Stats",
+      "description": "OS wait statistics by category and type",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Wait Stats\n\nWhat SQL Server is waiting on most: lock contention, CPU scheduling, parallelism coordination, or disk IO. The top wait categories reveal the primary bottleneck in your workload."
+          }
+        },
+        {
+          "title": "Top Wait Categories (sec)",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT max(sqlserver.os.wait.duration) AS 'Wait (s)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.os.wait.duration' FACET service.instance.id, `wait.category` LIMIT 15"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Wait Tasks Count by Category",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT max(sqlserver.os.wait.tasks.count) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.os.wait.tasks.count' FACET service.instance.id, `wait.category` LIMIT 15"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Wait Duration Over Time (Top 5 Categories)",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 12,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.os.wait.duration) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.os.wait.duration' FACET service.instance.id, `wait.category` TIMESERIES LIMIT 5"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Locks",
+      "description": "Lock analysis by mode, resource, and wait metrics",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Locks\n\nActive lock analysis: which lock modes (shared, exclusive, update) and resource types (row, page, table) are being held. High exclusive locks with long wait times indicate blocking contention."
+          }
+        },
+        {
+          "title": "Lock Waits/sec",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.lock.wait.rate) AS 'Lock Waits/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.lock.wait.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Lock Timeout Rate",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.lock.timeout.rate) AS 'Timeouts/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.lock.timeout.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Lock Wait Count (Workload Group)",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 12,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.lock.wait.count) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.lock.wait.count' FACET service.instance.id, `workload_group.name` TIMESERIES  "
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "description": "Transaction rates, longest running, and version store",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Transactions\n\nTransaction throughput and health: how many transactions per second, the longest currently open transaction (long-running transactions can cause blocking and tempdb growth), and version store activity."
+          }
+        },
+        {
+          "title": "Active Transactions by Database",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.database.transactions.active) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.database.transactions.active' FACET service.instance.id, `db.namespace`  "
+              }
+            ]
+          }
+        },
+        {
+          "title": "Longest Running Transaction (sec)",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.transaction.longest_running_time) AS 'Longest (s)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.transaction.longest_running_time' FACET service.instance.id TIMESERIES"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 300
+              },
+              {
+                "alertSeverity": "WARNING",
+                "value": 60
+              }
+            ]
+          }
+        },
+        {
+          "title": "Transaction Delay (ms)",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.transaction.delay) AS 'Delay (ms)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.transaction.delay' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Version Store Cleanup & Generation Rate",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.transaction.version_cleanup.rate) AS 'Cleanup', latest(sqlserver.transaction.version_generation.rate) AS 'Generation' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName IN ('sqlserver.transaction.version_cleanup.rate', 'sqlserver.transaction.version_generation.rate') FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Latch Analysis",
+      "description": "Latch waits, superlatch activity, and wait times",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Latch Analysis\n\nInternal synchronization: latches are lightweight locks SQL Server uses to protect memory structures. High latch waits can indicate hot pages (many threads accessing the same data page simultaneously)."
+          }
+        },
+        {
+          "title": "Latch Waits/sec",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.latch.wait.rate) AS 'Latch Waits/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.latch.wait.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Latch Wait Time Avg (s)",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.latch.wait_time.avg) AS 'Avg (s)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.latch.wait_time.avg' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Latch Wait Time Total (cumulative sec)",
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.latch.wait_time.total) AS 'Total (s)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.latch.wait_time.total' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Superlatch Count",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.latch.superlatch.count) AS 'Active Superlatches' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.latch.superlatch.count' FACET service.instance.id"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Superlatch Transitions (Promotions/Demotions)",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.latch.superlatch.transition.rate) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.latch.superlatch.transition.rate' FACET service.instance.id, `transition.direction` TIMESERIES"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Thread Pool & TempDB",
+      "description": "Worker thread utilization and TempDB health",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Thread Pool & TempDB\n\nWorker thread utilization (approaching max workers causes queuing) and TempDB health: space allocation by category, file count (should match CPU cores for optimal performance), and page contention."
+          }
+        },
+        {
+          "title": "Thread Pool Workers by State",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.thread_pool.workers.count) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.thread_pool.workers.count' FACET service.instance.id, `worker.state` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Thread Pool Utilization %",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.thread_pool.workers.utilization) * 100 AS 'Util %' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.thread_pool.workers.utilization' FACET service.instance.id"
+              }
+            ],
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 80
+              },
+              {
+                "alertSeverity": "WARNING",
+                "value": 60
+              }
+            ]
+          }
+        },
+        {
+          "title": "Tasks by State",
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.thread_pool.tasks.count) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.thread_pool.tasks.count' FACET service.instance.id, `task.state` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "TempDB Space Usage (MB)",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.tempdb.space.usage) / 1048576 AS 'MB' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.tempdb.space.usage' FACET service.instance.id, `tempdb.space_kind`"
+              }
+            ]
+          }
+        },
+        {
+          "title": "TempDB File Sizes (MB)",
+          "layout": {
+            "column": 5,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.tempdb.file.size) / 1048576 AS 'MB' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.tempdb.file.size' FACET service.instance.id, `file_type`, `tempdb.file.id`  "
+              }
+            ]
+          }
+        },
+        {
+          "title": "TempDB Contention & Data Files",
+          "layout": {
+            "column": 9,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.tempdb.contention.waiters.count) AS 'Contention Waiters', latest(sqlserver.tempdb.data_files.count) AS 'Data Files' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName IN ('sqlserver.tempdb.contention.waiters.count', 'sqlserver.tempdb.data_files.count') FACET service.instance.id"
+              }
+            ]
+          }
+        },
+        {
+          "title": "TempDB Allocation Wait Time (sec) by Page Type",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 12,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.bar"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.tempdb.allocation.wait_time.total) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.tempdb.allocation.wait_time.total' FACET service.instance.id, `allocation.page_type`"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Always-On / Failover",
+      "description": "Availability Group and replica metrics (requires AG configuration)",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Always-On / Failover\n\nAvailability Group health: replica roles, synchronization state, log send/redo queues, and flow control. Only populated when Always-On AG is configured on your SQL Server instance."
+          }
+        },
+        {
+          "title": "Replica Flow Control Time (ms)",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.failover_cluster.replica.flow_control_time) AS 'Flow Control (ms)' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.failover_cluster.replica.flow_control_time' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Replica Data Rate (bytes/sec)",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.replica.data.rate) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.replica.data.rate' FACET service.instance.id, `replica.direction` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "AG Queue Size (bytes)",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.failover_cluster.replica.database.queue_size) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.failover_cluster.replica.database.queue_size' FACET service.instance.id, `replica.queue_kind` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "AG Redo Rate (bytes/sec)",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.failover_cluster.replica.database.redo.rate) AS 'Redo Rate' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.failover_cluster.replica.database.redo.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Note\n\nAlways-On metrics only populate when SQL Server has Availability Groups configured. If no AG is configured, these charts will be empty \u2014 this is expected behavior."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Resource Governor",
+      "description": "Resource pool disk operations and throttling",
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "### Resource Governor\n\nResource pool disk operations and throttling, plus login/logout churn rates and attention events. Useful for identifying resource contention in multi-tenant environments."
+          }
+        },
+        {
+          "title": "Resource Pool Disk Operations/sec",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.resource_pool.disk.operations) FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.resource_pool.disk.operations' FACET service.instance.id, `direction` TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Disk Read Throttled/sec",
+          "layout": {
+            "column": 5,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.resource_pool.disk.throttled.read.rate) AS 'Read Throttled/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.resource_pool.disk.throttled.read.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Disk Write Throttled/sec",
+          "layout": {
+            "column": 9,
+            "row": 3,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.resource_pool.disk.throttled.write.rate) AS 'Write Throttled/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.resource_pool.disk.throttled.write.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Login & Logout Rates",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.login.rate) AS 'Logins/sec', latest(sqlserver.logout.rate) AS 'Logouts/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName IN ('sqlserver.login.rate', 'sqlserver.logout.rate') FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Attention Rate",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT latest(sqlserver.attention.rate) AS 'Attentions/sec' FROM Metric WHERE service.instance.id IN ({{instance}}) AND metricName = 'sqlserver.attention.rate' FACET service.instance.id TIMESERIES"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "name": "instance",
+      "items": null,
+      "defaultValues": [],
+      "nrqlQuery": {
+        "accountIds": [],
+        "query": "FROM Metric SELECT uniques(service.instance.id) WHERE otel.library.name IN ('github.com/newrelic-forks/opentelemetry-collector-contrib/receiver/nrsqlserverreceiver', 'github.com/newrelic-forks/opentelemetry-collector-contrib/receiver/sqlserverreceiver') LIMIT 100"
+      },
+      "options": {
+        "hiddenOnVariablesBar": false,
+        "ignoreTimeRange": true,
+        "excluded": false,
+        "showApplyAction": false
+      },
+      "title": "SQL Server Instance",
+      "type": "NRQL",
+      "isMultiSelection": true,
+      "replacementStrategy": "STRING"
+    }
+  ]
+}

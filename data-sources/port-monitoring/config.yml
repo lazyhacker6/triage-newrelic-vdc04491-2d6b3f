@@ -1,0 +1,13 @@
+id: port-monitoring
+displayName: Port monitoring
+description: |
+  Efficient port monitoring is essential to understand context for status changes and respond quickly. Download the New Relic port monitoring quickstart to track your network port’s critical metrics and improve performance.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: port-monitoring
+        frameworkConfigId: port-monitoring
+      requiresAccount: false
+icon: logo.svg

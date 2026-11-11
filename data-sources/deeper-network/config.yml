@@ -1,0 +1,24 @@
+id: deeper-network
+displayName: Deeper Network
+description: |
+  This guide details how to use and install the `deeper-cli` to integrate and monitor your Deeper Connect devices with New Relic.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: deeper-network
+        frameworkConfigId: deeper-network
+      requiresAccount: false
+keywords:
+  - infrastructure
+  - network
+  - nrlabs
+  - deeper-network
+  - crypto
+  - security
+categoryTerms:
+  - newrelic partner
+  - network
+  - infrastructure

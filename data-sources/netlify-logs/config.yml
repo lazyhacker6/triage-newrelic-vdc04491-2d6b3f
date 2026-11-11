@@ -1,0 +1,26 @@
+id: netlify-logs
+displayName: Netlify Logs
+description: |
+  Netlify is an all-in-one platform for automating modern web projects. Replace your hosting infrastructure, continuous integration, and deployment pipeline with a single workflow.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: netlify-logs
+        frameworkConfigId: netlify-logs
+      requiresAccount: false
+keywords:
+  - netlify
+  - logs
+  - traffic logs
+  - function logs
+  - log drains
+  - jamstack
+  - serverless functions
+  - newrelic partner
+categoryTerms:
+  - newrelic partner
+  - logs
+  - browser agent

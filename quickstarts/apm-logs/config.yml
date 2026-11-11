@@ -1,0 +1,24 @@
+id: c5c5dd30-abcf-46b6-3497-f9a1bba5b700
+slug: apm-logs
+title: APM Logs
+description: |
+  This dashboard helps customers keep an eye on APM Logs sent to NR. It will monitor for any dropped logs and/or duplicate logging with the infra agent.
+
+  For more information or support, please go to https://docs.newrelic.com/docs/logs/logs-context/upgrade-to-automatic-logs-context/
+summary: |
+  Get better insights into your logging data sent by our apm agents.
+level: New Relic
+authors:
+  - Leon Chapman
+keywords:
+  - logs
+  - APM
+dataSourceIds:
+  - guided-install
+documentation:
+  - name: New Relic APM Installation Docs
+    url: https://docs.newrelic.com/docs/logs/logs-context/upgrade-to-automatic-logs-context/
+    description: Configure automatic logs in context with logs
+icon: logo.svg
+dashboards:
+  - apm-log-monitoring

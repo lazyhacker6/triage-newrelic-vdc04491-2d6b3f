@@ -1,0 +1,294 @@
+{
+  "name" : "Kafka (Infrastructure Agent)",
+  "description" : "",
+  "pages" : [ {
+    "name" : "Kafka",
+    "description" : "",
+    "widgets" : [ {
+      "visualization" : {
+        "id" : "viz.billboard"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 1,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Number of Brokers",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT uniqueCount(entity.name) as 'Brokers' FROM Metric where entity.name like 'broker:%'"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 1,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Messages In Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(broker.messagesInPerSecond) FROM KafkaBrokerSample WHERE (entityName LIKE 'broker:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.markdown"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 1,
+        "height" : 6,
+        "width" : 4
+      },
+      "rawConfiguration" : {
+        "text" : "# Kafka** \n\nApache Kafka is an open source distributed streaming platform which aims to provide a high-throughput, low-latency platform for managing message feeds.\n\n\n"
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 4,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Broker Bytes In Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(broker.IOInPerSecond) FROM KafkaBrokerSample WHERE (entityName LIKE 'broker:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 4,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Broker Bytes Out Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(broker.IOOutPerSecond) FROM KafkaBrokerSample WHERE (entityName LIKE 'broker:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 7,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Leader Election Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(replication.leaderElectionPerSecond) FROM KafkaBrokerSample WHERE (entityName LIKE 'broker:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 7,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Unclean Leader Election Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(replication.uncleanLeaderElectionPerSecond) FROM KafkaBrokerSample WHERE (entityName LIKE 'broker:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 7,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Topic Bytes Written",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(broker.bytesWrittenToTopicPerSecond) FROM KafkaBrokerSample WHERE (entityName LIKE 'broker:%') SINCE 12 HOURS AGO FACET topic TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Consumer Minimum Requests Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(consumer.fetchPerSecond) FROM KafkaConsumerSample WHERE (entityName LIKE 'consumer:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Consumer Max Lag",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(consumer.maxLag) FROM KafkaConsumerSample WHERE (entityName LIKE 'consumer:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Unreplicated Partitions",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(replication.unreplicatedPartitions) FROM KafkaBrokerSample WHERE (entityName LIKE 'broker:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.table"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 13,
+        "height" : 6,
+        "width" : 4
+      },
+      "title" : "Consumer Lag",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT latest(consumer.totalLag) FROM KafkaOffsetSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 13,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Consumer Messages Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(consumer.messageConsumptionPerSecond) FROM KafkaConsumerSample WHERE (entityName LIKE 'consumer:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.table"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 13,
+        "height" : 6,
+        "width" : 4
+      },
+      "title" : "Number of Underreplicated Partitions",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT latest(topic.underReplicatedPartitions) AS `Under Replicated Partitions` FROM KafkaTopicSample WHERE (entityName LIKE 'topic%') FACET entityName"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 16,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Consumer Bytes In Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(consumer.bytesInPerSecond) FROM KafkaConsumerSample WHERE (entityName LIKE 'consumer:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 19,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Producer Request Avg Latency Per Second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(producer.avgRequestLatencyPerSecond) FROM KafkaProducerSample WHERE (entityName LIKE 'producer:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 19,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Producer IO Wait Time in Milliseconds",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(producer.ioWaitTime) FROM KafkaProducerSample WHERE (entityName LIKE 'producer:%') SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    } ]
+  } ]
+}

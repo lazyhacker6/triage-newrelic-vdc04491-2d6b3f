@@ -1,0 +1,20 @@
+id: fastly
+displayName: Fastly CDN
+description: |
+  Fastly's edge cloud platform enables customers to create great digital experiences quickly, securely, and reliably by processing, serving, and securing our customers' applications as close to their end-users as possible.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://docs.fastly.com/en/guides/log-streaming-newrelic-logs
+keywords:
+  - Fastly
+  - CDN
+  - logs
+  - content delivery
+  - POP
+  - featured
+  - newrelic partner
+categoryTerms:
+  - logs
+  - newrelic partner

@@ -1,0 +1,56 @@
+id: 63f7cc4c-57d8-41e5-a496-a2e61efa992f
+slug: node-exporter
+title: Node Exporter
+description: |
+  Official New Relic dashboard for Prometheus Node Exporter. Node Exporter allows host metrics gathered by the exporter to be scraped by Prometheus Server.
+
+  ## Dashboard Highlights
+  - Load Averages
+  - CPU
+  - Memory Usage
+  - Storage Usage
+  - Network
+
+  ## Requirements:
+  1. [Prometheus Server](https://prometheus.io/docs/prometheus/latest/installation/)
+  2. [Node Exporter](https://prometheus.io/docs/guides/node-exporter/) installed
+  3. Enable Prometheus [Remote Write](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-remote-write/set-your-prometheus-remote-write-integration/) to New Relic.
+  4. To be able to filter metrics by a specific label that isn't part of the Node Exporter default installation, an `external_label` will need to be added to the Prometheus config. Example:
+      `
+        global:
+          external_labels:
+            clusterName: <cluster_name>
+      `
+summary: |
+  Dashboard for metrics gathered through Node Exporter
+level: New Relic
+authors:
+  - New Relic
+keywords:
+  - prometheus
+  - exporter
+  - remote
+  - write
+  - host
+  - cpu
+  - memory
+  - storage
+  - network
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - prometheus
+documentation:
+  - name: Node Exporter - Prometheus
+    description: |
+      Monitoring Linux Host Metrics with the Node Exporter
+    url: https://prometheus.io/docs/guides/node-exporter/
+  - name: Node Exporter - GitHub
+    description: |
+      Exporter for machine metrics
+    url: https://github.com/prometheus/node_exporter
+icon: logo.png
+dashboards:
+  - node-exporter
+alertPolicies:
+  - node-exporter

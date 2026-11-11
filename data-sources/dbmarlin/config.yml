@@ -1,0 +1,23 @@
+id: dbmarlin
+displayName: DBmarlin
+description: |
+  DBmarlin monitors database performance, tracks changes and helps your databases run fast.
+icon: logo.svg
+install:
+  primary:
+    link:
+      url: https://docs.dbmarlin.com/docs/integrations/newrelic
+keywords:
+  - database
+  - performance
+  - cockroach
+  - db2
+  - mysql
+  - maria
+  - oracle
+  - postgres
+  - sql
+  - newrelic partner
+categoryTerms:
+  - infrastructure
+  - newrelic partner

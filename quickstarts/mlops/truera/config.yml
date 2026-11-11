@@ -1,0 +1,34 @@
+id: 81402789-9ae9-4cbd-8686-4d2d4de8951f
+slug: truera
+title: Truera
+description: |
+  ## Why monitor TrueEra?
+  Monitoring TruEra with New Relic ensures real-time visibility into AI model performance, facilitating proactive optimization and enhancing reliability. By tracking key metrics and identifying anomalies, organizations can ensure the accuracy and efficiency of their AI models, leading to improved business outcomes and customer satisfaction. New Relic’s comprehensive monitoring capabilities empower teams to detect issues early, streamline troubleshooting, and optimize AI model operations, ultimately driving innovation and competitive advantage in today’s data-driven landscape.
+summary: |
+  Monitoring TruEra with New Relic provides real-time insights into model performance, enabling proactive optimization and ensuring the reliability and accuracy of AI models, ultimately enhancing business outcomes and customer satisfaction.
+level: New Relic
+authors:
+  - Truera
+keywords:
+  - mlops
+  - ml
+  - ai
+  - machine learning
+  - ml monitoring
+  - machine learning monitoring
+  - xai
+  - explainable ai
+  - explanability
+  - truera
+  - newrelic partner
+dataSourceIds:
+  - truera
+documentation:
+  - name: Truera Docs
+    description: |
+      Documentation on the workings of the Truera integration
+    url: https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/truera-integration/
+icon: logo.svg
+
+dashboards:
+  - truera

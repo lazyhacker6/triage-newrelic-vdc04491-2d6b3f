@@ -1,0 +1,42 @@
+id: c377d781-da77-4dd6-b5a8-6a25a39e2582
+slug: ansible
+title: Ansible
+description: |
+  # What is Ansible?
+  Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
+
+  Designed for multi-tier deployments since day one, Ansible models your IT infrastructure by describing how all of your systems inter-relate, rather than just managing one system at a time.
+
+  It uses no agents and no additional custom security infrastructure, so it's easy to deploy - and most importantly, it uses a very simple language (YAML, in the form of Ansible Playbooks) that allow you to describe your automation jobs in a way that approaches plain English.
+
+  # What does New Relic provide
+  New Relic has developed a Ansible role for the Ansible agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/), [New Relic Application Performance Monitoring](https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/install-configure/configure-new-relic-agents/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.
+
+  # How to get started?
+  Follow the instructions on New Relic documentation: [Configure the infrastructure agent using Ansible](https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent/config-management-tools/configure-infrastructure-agent-using-ansible)
+summary: |
+  New Relic Ansible role to deploy the New Relic Infrastructure agent, New Relic APM and On Host Integrations throughout your environment.
+level: New Relic
+authors:
+  - New Relic
+keywords:
+  - automation
+  - devops
+  - sre
+  - gitops
+dataSourceIds:
+  - ansible-install
+documentation:
+  - name: Ansible installation docs
+    description: |
+      Open-source software provisioning, configuration management, and
+      application-deployment tool enabling infrastructure as code.
+    url: https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent/config-management-tools/configure-infrastructure-agent-using-ansible
+  - name: Ansible Galaxy
+    description: |
+      Ansible Galaxy page for the New Relic Ansible role
+    url: https://galaxy.ansible.com/newrelic/newrelic_install
+  - name: Github repository
+    description: Github repository for the New Relic Role.
+    url: https://github.com/newrelic/ansible-install
+icon: logo.svg

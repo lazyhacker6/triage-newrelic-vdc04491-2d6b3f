@@ -1,0 +1,29 @@
+id: e5ac132e-2da5-478a-afcf-7037601a9bea
+slug: synthetics-ssl-certification-check
+title: Synthetics SSL Certification check
+description: |
+  # What is Synthetics monitoring?
+  Synthetic monitoring is a suite of automated, scriptable tools to monitor your websites, critical business transactions, and API endpoints. You can simulate user traffic to proactively detect and resolve outages and poor performance of critical endpoints before your customers notice.
+
+  # What is a SSL Certification check
+  Synthetics SSL Certification check will proactively ping your domain certificates based on a configurable threshold. Pair with an alert to ensure you are notified when your certificates need renewed.
+summary: |
+  Check the expiration and validity period on an SSL certificate of a given domain.
+level: New Relic
+authors:
+  - New Relic
+keywords:
+  - http
+  - uptime
+  - web
+  - api
+  - url
+  - www
+  - synthetics
+dataSourceIds:
+  - new-relic-synthetics
+documentation:
+  - name: Getting started
+    url: https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/getting-started/get-started-synthetic-monitoring/
+    description: Get started with synthetic monitoring
+icon: logo.svg

@@ -1,0 +1,17 @@
+id: apache-traffic-server
+displayName: Apache Traffic Server
+description: |
+  Optimize your Apache Traffic Server performance using New Relic Apache Traffic Server monitoring.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: apache-traffic-server
+        frameworkConfigId: apache-traffic-server
+      requiresAccount: false
+keywords:
+  - apache-traffic-server
+  - apache
+  - ats

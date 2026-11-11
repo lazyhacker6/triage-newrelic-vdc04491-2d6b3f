@@ -1,0 +1,40 @@
+id: 0e2c5c90-bda2-4147-82af-8b9bf8038ee6
+slug: servicenow-notifications
+
+title: ServiceNow Notifications
+
+description: |
+
+  ServiceNow is a software that helps companies manage digital workflows for enterprise operations.
+
+  Integrate New Relic with ServiceNow Incident-Management and automatically create and update incidents.
+
+  [Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#servicenow) to set up a ServiceNow notification channel and provide fast and consistent ways for the right personnel to be notified about incidents
+
+summary: |
+  Send your New Relic alerts to ServiceNow
+
+icon: logo.png
+
+level: New Relic
+
+authors:
+  - Matan Moser (New Relic)
+  - Ismail Azam (New Relic)
+
+documentation:
+  - name: ServiceNow installation docs
+    url: https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#servicenow
+    description: With our ServiceNow integration, sync issues caught in New Relic with ServiceNow incidents. Check out our documentation to set up ServiceNow destinations and configure a message template, so your personnel are always informed.
+
+keywords:
+  - servicenow
+  - notifications
+  - AIOps
+  - Incident Intelligence
+  - Destinations
+  - NR1_addData
+  - NR1_sys
+
+dataSourceIds:
+  - servicenow-notifications

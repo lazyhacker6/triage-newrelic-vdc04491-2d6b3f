@@ -1,0 +1,13 @@
+id: ibmmq-integration-docs
+displayName: IBM MQ (Infrastructure Agent)
+description: |
+  The New Relic IBM MQ monitor allows you to monitor the performance of MQ Objects like channels and queues.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: ibmmq-integration-docs
+        frameworkConfigId: ibmmq-integration-docs
+      requiresAccount: false
+icon: logo.png

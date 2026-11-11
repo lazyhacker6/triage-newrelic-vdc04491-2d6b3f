@@ -1,0 +1,203 @@
+{
+	"name": "Amazon Linux",
+	"description": null,
+	"pages": [
+		{
+			"name": "Amazon Linux",
+			"description": null,
+			"widgets": [
+				{
+					"visualization": {
+						"id": "viz.table"
+					},
+					"layout": {
+						"column": 1,
+						"row": 1,
+						"height": 3,
+						"width": 6
+					},
+					"title": "Instance CPU Overview",
+					"rawConfiguration": {
+						"dataFormatters": [],
+						"facet": {
+							"showOtherSeries": false
+						},
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT sum(`provider.cpuCreditBalance.Sum`) AS `Total CPU Credit Balance`, sum(`provider.cpuCreditUsage.Sum`) AS `CPU credit used`, sum(`provider.cpuSurplusCreditsCharged.Sum`) AS `CPU Surplus Credit Charged` FROM ComputeSample WHERE ((`provider` = 'Ec2Instance') AND ((`collector`.`name` = 'cloudwatch-metric-streams') AND (`aws`.`Namespace` = 'AWS/EC2'))) SINCE 1 HOURS AGO FACET (ec2InstanceId OR provider.ec2InstanceId)"
+							}
+						]
+					},
+					"linkedEntityGuids": null
+				},
+				{
+					"visualization": {
+						"id": "viz.billboard"
+					},
+					"layout": {
+						"column": 7,
+						"row": 1,
+						"height": 3,
+						"width": 4
+					},
+					"title": "Running Instances",
+					"rawConfiguration": {
+						"dataFormatters": [],
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT uniqueCount(aws.ec2.InstanceId) FROM Metric WHERE collector.name = 'cloudwatch-metric-streams' FACET aws.region SINCE 1 hour ago"
+							}
+						],
+						"thresholds": []
+					},
+					"linkedEntityGuids": null
+				},
+				{
+					"visualization": {
+						"id": "viz.billboard"
+					},
+					"layout": {
+						"column": 11,
+						"row": 1,
+						"height": 3,
+						"width": 2
+					},
+					"title": "Failed Status Checks",
+					"rawConfiguration": {
+						"dataFormatters": [],
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT sum(`provider.statusCheckFailed.Sum`) AS `Failed Checks` FROM ComputeSample WHERE ((`provider` = 'Ec2Instance') AND (`aws`.`Namespace` = 'AWS/EC2')) SINCE 1 HOURS AGO"
+							}
+						],
+						"thresholds": []
+					},
+					"linkedEntityGuids": null
+				},
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 1,
+						"row": 4,
+						"height": 3,
+						"width": 6
+					},
+					"title": "Average CPU Utilization",
+					"rawConfiguration": {
+						"facet": {
+							"showOtherSeries": false
+						},
+						"legend": {
+							"enabled": true
+						},
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT average(`provider.cpuUtilization.Average`) FROM ComputeSample WHERE ((`provider` = 'Ec2Instance') AND ((`collector`.`name` = 'cloudwatch-metric-streams') AND (`aws`.`Namespace` = 'AWS/EC2'))) SINCE 1 HOURS AGO FACET (ec2InstanceId OR provider.ec2InstanceId) TIMESERIES 300000"
+							}
+						],
+						"yAxisLeft": {
+							"zero": true
+						}
+					},
+					"linkedEntityGuids": null
+				},
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 7,
+						"row": 4,
+						"height": 3,
+						"width": 6
+					},
+					"title": "Average Network In/Out",
+					"rawConfiguration": {
+						"facet": {
+							"showOtherSeries": false
+						},
+						"legend": {
+							"enabled": true
+						},
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT average(`provider.networkInBytes.Average`), average(`provider.networkOutBytes.Average`) FROM ComputeSample WHERE ((`provider` = 'Ec2Instance') AND ((`collector`.`name` = 'cloudwatch-metric-streams') AND (`aws`.`Namespace` = 'AWS/EC2'))) SINCE 1 HOURS AGO FACET (ec2InstanceId OR provider.ec2InstanceId) TIMESERIES 300000"
+							}
+						],
+						"yAxisLeft": {
+							"zero": true
+						}
+					},
+					"linkedEntityGuids": null
+				},
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 1,
+						"row": 7,
+						"height": 3,
+						"width": 6
+					},
+					"title": "Average Disk Read/Write Ops",
+					"rawConfiguration": {
+						"facet": {
+							"showOtherSeries": false
+						},
+						"legend": {
+							"enabled": true
+						},
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT average(`provider.diskReadOps.Average`), average(`provider.diskWriteOps.Average`) FROM ComputeSample WHERE ((`provider` = 'Ec2Instance') AND ((`collector`.`name` = 'cloudwatch-metric-streams') AND (`aws`.`Namespace` = 'AWS/EC2'))) SINCE 1 HOURS AGO FACET (ec2InstanceId OR provider.ec2InstanceId) TIMESERIES 300000"
+							}
+						],
+						"yAxisLeft": {
+							"zero": true
+						}
+					},
+					"linkedEntityGuids": null
+				},
+				{
+					"visualization": {
+						"id": "viz.line"
+					},
+					"layout": {
+						"column": 7,
+						"row": 7,
+						"height": 3,
+						"width": 6
+					},
+					"title": "Average Disk Write/Read Bytes",
+					"rawConfiguration": {
+						"facet": {
+							"showOtherSeries": false
+						},
+						"legend": {
+							"enabled": true
+						},
+						"nrqlQueries": [
+							{
+								"accountId": 0,
+								"query": "SELECT average(`provider.diskReadBytes.Average`), average(`provider.diskWriteBytes.Average`) FROM ComputeSample WHERE ((`provider` = 'Ec2Instance') AND ((`collector`.`name` = 'cloudwatch-metric-streams') AND (`aws`.`Namespace` = 'AWS/EC2'))) SINCE 1 HOURS AGO FACET (ec2InstanceId OR provider.ec2InstanceId) TIMESERIES 300000"
+							}
+						],
+						"yAxisLeft": {
+							"zero": true
+						}
+					},
+					"linkedEntityGuids": null
+				}
+			]
+		}
+	]
+}

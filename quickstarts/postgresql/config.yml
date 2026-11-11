@@ -1,0 +1,26 @@
+id: 18ee5d2e-f5dd-4e0a-9616-af9deaa12cb2
+slug: postresql
+title: PostgreSQL
+description: |
+  Official New Relic quickstart for PostgreSQL
+  Use this quickstart together with the New Relic PostgreSQL On Host Integration to get insight into the performance of your PostgreSQL instances.
+summary: |
+  Monitor PostgreSQL with New Relic's On Host Integration.
+level: New Relic
+icon: logo.jpeg
+
+authors:
+  - New Relic
+  - Daniel Gola
+documentation:
+  - name: Postgres
+    description: |
+      Object-relational database management system designed to handle a range of workloads from single machines to data warehouses or services.
+    url: https://docs.newrelic.com/install/postgresql/
+dataSourceIds:
+  - postgresql
+keywords:
+  - database
+  - infrastructure
+dashboards:
+  - postgresql

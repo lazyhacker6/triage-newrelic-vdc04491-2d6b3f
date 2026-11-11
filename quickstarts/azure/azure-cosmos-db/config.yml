@@ -1,0 +1,35 @@
+id: 81c38d53-5931-4fbc-9288-57c2c84cb1fd
+slug: azure-cosmos-db
+description: |-
+  ## What is Azure Cosmos DB?
+
+  Quickly and easily scale your database traffic across multiple Azure regions.
+
+  ### Get started!
+
+  Start monitoring Azure Cosmos DB by connecting Microsoft Azure to New Relic!
+
+  Check out our Azure Cosmos DB documentation to instrument your cloud service and manage the stability, scalability, and reliability of your systems with New Relic's infrastructure monitoring capabilities.
+
+  ### More info
+
+  Check out the [documentation](https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-cosmos-db-document-db-monitoring-integration/) to learn more about New Relic monitoring for Azure Cosmos DB.
+summary: Monitor Azure Cosmos DB by connecting Azure to New Relic
+icon: logo.svg
+level: New Relic
+authors:
+  - New Relic
+  - Emil Hammarstrand
+title: Azure Cosmos DB
+documentation:
+  - name: Azure Cosmos DB installation docs
+    description: |
+      Monitor Azure Cosmos DB by connecting Azure to New Relic.
+    url: https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-cosmos-db-document-db-monitoring-integration/
+keywords:
+  - azure
+  - database
+dataSourceIds:
+  - microsoft-azure
+dashboards:
+  - azure-cosmos-db

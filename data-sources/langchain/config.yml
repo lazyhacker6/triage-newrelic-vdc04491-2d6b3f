@@ -1,0 +1,32 @@
+id: langchain
+displayName: LangChain
+description: |
+  Implement monitoring and instrumentation for your LangChain, and ensure that your LangChain data is integrated into New Relic for effective performance analysis and insights.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: langchain
+        frameworkConfigId: langchain
+      requiresAccount: false
+icon: logo.png
+keywords:
+  - AI
+  - LLM
+  - AIM
+  - Ollama
+  - llama
+  - Open
+  - OpenLLM
+  - bentoml
+  - PaLM
+  - PaLM2
+  - Jina
+  - Embedding
+  - Mosaic
+  - MosaicML
+  - Langchain
+  - Hugging
+  - HuggingFace
+  - Anyscale

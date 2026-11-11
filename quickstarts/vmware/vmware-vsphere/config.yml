@@ -1,0 +1,30 @@
+id: 87bd9d20-a193-4aa8-80f7-a1f5c65278f1
+slug: vmware-vsphere
+title: VMware vSphere
+description: |
+  Enterprise Workload Platform for Traditional and Next Gen Apps
+summary: |
+  Enterprise Workload Platform for Traditional and Next Gen Apps
+level: New Relic
+authors:
+  - New Relic
+  - Zack Mutchler
+  - Marc Netterfield
+keywords:
+  - infrastructure
+  - vmware
+  - vsphere
+  - esxi
+  - vcenter
+dataSourceIds:
+  - vmware-vsphere
+alertPolicies:
+  - vmware-vsphere
+dashboards:
+  - vmware-vsphere
+documentation:
+  - name: VMware vSphere installation docs
+    description: |
+      Enterprise Workload Platform for Traditional and Next Gen Apps
+    url: https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/vmware-vsphere-monitoring-integration/#install
+icon: logo.svg

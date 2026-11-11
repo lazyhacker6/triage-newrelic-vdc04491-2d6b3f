@@ -1,0 +1,25 @@
+id: mux-video
+displayName: Mux
+description: |
+  Mux allows users to launch video features in days, customize the player experience, and monitor video streaming performance, all while scaling seamlessly to the world’s largest audiences.
+icon: logo.svg
+install:
+  primary:
+    nerdlet: 
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: mux-video
+        frameworkConfigId: mux-video
+      requiresAccount: false
+keywords:
+  - mux
+  - video quality
+  - video experience
+  - quality of experience
+  - video streaming
+  - video metrics
+  - featured
+  - newrelic partner
+  - NR1_addData
+categoryTerms:
+  - newrelic partner

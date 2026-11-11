@@ -1,0 +1,20 @@
+id: databricks
+displayName: Databricks Integration
+description: |
+  The Databricks Integration collects Apache Spark application metrics, Lakeflow
+  job run metrics, Lakeflow Spark Declarative Pipeline update metrics, query
+  metrics, cluster health metrics and logs, and consumption and cost data.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://github.com/newrelic/newrelic-databricks-integration?tab=readme-ov-file#getting-started
+keywords:
+  - nrlabs
+  - nrlabs-data
+  - apache spark
+  - spark
+  - databricks
+  - newrelic partner
+categoryTerms:
+  - newrelic partner

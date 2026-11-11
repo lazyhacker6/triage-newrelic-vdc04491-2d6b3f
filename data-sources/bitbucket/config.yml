@@ -1,0 +1,24 @@
+id: bitbucket
+displayName: Bitbucket
+description: |
+  With best-in-class Jira integration, and built-in CI/CD, Bitbucket Cloud is the native Git tool in Atlassian’s Open DevOps solution.
+
+icon: logo.svg
+install:
+  primary:
+    link:
+      url: https://bitbucket.org/product/features/pipelines/integrations?p=jcountsnr/newrelic_observability_event
+  fallback:
+    link:
+      url: https://bitbucket.org/product/features/pipelines/integrations
+keywords:
+  - newrelic partner
+  - devops
+  - bitbucket
+  - atlassian
+  - cicd
+  - featured
+  - pipes
+  - pipline
+categoryTerms:
+  - newrelic partner

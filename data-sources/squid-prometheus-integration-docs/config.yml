@@ -1,0 +1,9 @@
+id: squid-prometheus-integration-docs
+displayName: Squid Prometheus Integration
+description: |
+  The New Relic Squid prometheus integration allows you to monitor your Squid cache managers
+install:
+  primary:
+    link:
+      url: https://github.com/newrelic/newrelic-opentelemetry-examples/tree/main/other-examples/collector/squid
+icon: logo.png

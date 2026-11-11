@@ -1,0 +1,51 @@
+id: langchain-vectordb
+displayName: LangChain Vector Database
+description: |
+  Implement monitoring and instrumentation for your LangChain Vector Database and ensure that your vector database is integrated into New Relic for effective performance analysis and insights.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: langchain-vectordb
+        frameworkConfigId: langchain-vectordb
+      requiresAccount: false
+icon: logo.png
+keywords:
+  - AI
+  - AIM
+  - vector
+  - vectorDB
+  - DB
+  - FAISS
+  - meta
+  - Chroma
+  - ChromaDB
+  - ClickHouse
+  - DeepLake
+  - DocArray
+  - Search
+  - Elastic
+  - KNN
+  - Lance
+  - LangChain
+  - Marqo
+  - Meilisearch
+  - Milvus
+  - MyScale
+  - PG
+  - PGVector
+  - Postgres
+  - Embedding
+  - Qdrant
+  - SingleStore
+  - SKLearn
+  - StarRocks
+  - Supabase
+  - Tigris
+  - Typesense
+  - Vectara
+  - Weaviate
+  - Zilliz
+  - Hologres
+  - Annoy

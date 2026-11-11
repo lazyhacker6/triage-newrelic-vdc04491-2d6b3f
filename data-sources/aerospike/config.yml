@@ -1,0 +1,17 @@
+id: aerospike
+displayName: Aerospike
+description: |
+  Instrument and monitor your Aerospike with the New Relic infrastructure agent. Analyze your performance data using our pre-built dashboards and alert conditions.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: aerospike
+        frameworkConfigId: aerospike
+      requiresAccount: false
+icon: logo.png
+
+keywords:
+  - aerospike
+  - real-time data platform

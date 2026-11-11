@@ -1,0 +1,21 @@
+id: gigamon-appinsights
+displayName: Gigamon Application Insights
+description: |
+  Gigamon Application Intelligence unlocks full visibility into applications running in datacenters and public clouds, and get to the root causes of vulnerabilities and performance bottlenecks.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: gigamon-appinsights
+        frameworkConfigId: gigamon
+      requiresAccount: false
+keywords:
+  - Gigamon
+  - Gigamon Application Intelligence
+  - Gigamon Integration
+  - featured
+  - security
+  - packet capture
+  - network

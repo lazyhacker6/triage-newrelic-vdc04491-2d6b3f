@@ -1,0 +1,46 @@
+id: 475dec69-10c9-4bc6-8312-3caa266fb028
+slug: php
+title: PHP
+description: |
+  ## PHP server monitoring
+
+  Use our PHP monitoring agent to see a high-level summary of their app performance in a comprehensive PHP dashboard. Help teams monitor the app's Apdex, build architectural maps, and find and resolve errors quickly.
+
+  Our [PHP agent](https://docs.newrelic.com/docs/agents/php-agent/getting-started/introduction-new-relic-php/) collects and analyzes application data that drive data-driven decisions. Organize data, query data using NRQL, and visualize data (in customizable interactive dashboards) that directly impact customer experiences.
+
+  ### Real-time PHP metric monitoring
+
+  Identify slow AJAX request performance issues at a glance through our PHP dashboard that boasts broader visibility. Proactively monitor where you should concentrate your efforts and address potential errors quickly.
+
+  ### What’s included?
+
+  Our PHP quickstart include out-of-the-box dashboards and alerts, including:
+  - Alerts including error rates, duration, and throughput
+  - Multiple ready-to-use dashboards including throughput, error rate percentage, transaction time in milliseconds, and latest transactions
+
+  ### Discover the value of our PHP quickstart
+
+  New Relic's instant observability quickstart helps developers leverage broader visibility in a PHP dashboard to resolve errors and speed up processes that enhance customer experiences.
+summary: |
+  New Relic's instant observability quickstart with a PHP server monitor agent helps app developers quickly identify and resolve errors, including slow responses, to enhance customer experiences.
+level: New Relic
+icon: logo.svg
+
+authors:
+  - New Relic
+documentation:
+  - name: PHP
+    description: |
+      PHP is a general-purpose scripting language especially suited to web development.
+    url: https://docs.newrelic.com/docs/agents/php-agent/getting-started/php-agent-compatibility-requirements/
+keywords:
+  - apm
+  - php
+  - language agent
+  - most popular
+dataSourceIds:
+  - php
+dashboards:
+  - php
+alertPolicies:
+  - php

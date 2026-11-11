@@ -1,0 +1,45 @@
+id: a0daa1f8-99de-41ba-b7cb-7dd87c1bf7f2
+slug: dbmarlin
+title: DBmarlin
+description: |
+  The DBmarlin quickstart allows you to get visibility into the performance and availability of your database services from within New Relic.
+
+  To get started with DBmarlin, visit the [DBmarlin introduction page](https://docs.dbmarlin.com/docs/DBmarlin/introduction).
+
+  # About DBmarlin
+  DBmarlin monitors database performance, tracks changes and helps your databases run fast.
+
+  It provides an easy-to-use and consistent way to monitor CockroachDB, DB2, MariaDB, MySQL, Oracle, PostgreSQL and SQL Server, self-hosted or in the cloud.
+
+  It captures SQL statement text and wait events so you can see exactly where the time is spent executing SQL within your database.
+
+  It auto-detects changes to schema objects, database parameters and execution plans so you can see their impact on performance.
+summary: |
+  View database performance from within New Relic with this integration with DBmarlin.
+level: Community
+authors:
+  - DBmarlin
+keywords:
+  - database
+  - performance
+  - cockroach
+  - db2
+  - mysql
+  - maria
+  - oracle
+  - postgres
+  - sql
+  - infrastructure
+  - newrelic partner
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - dbmarlin
+documentation:
+  - name: Installation docs
+    url: https://docs.dbmarlin.com/docs/integrations/newrelic
+    description: Installation instructions for DBmarlin and the DBmarlin quickstart.
+icon: logo.svg
+
+dashboards:
+  - dbmarlin

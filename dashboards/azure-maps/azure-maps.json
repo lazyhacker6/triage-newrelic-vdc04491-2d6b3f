@@ -1,0 +1,192 @@
+{
+  "name": "Azure Maps",
+  "description": null,
+
+  "pages": [
+    {
+      "name": "Azure Maps",
+      "description": null,
+      "widgets": [
+        {
+          "title": "Summary",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 8,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(azure.maps.accounts.Availability) As 'Average Availability', AVERAGE(azure.maps.accounts.CreatorUsage) As 'Average Creator Usage', SUM(azure.maps.accounts.Usage) As 'Total Usage' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.maps/accounts'"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Azure Maps\nAzure Maps is a suite of geospatial mapping services that enable developers and enterprise organizations to build intelligent location-enabled and map-based experiences. Build compelling functionality including asset tracking, vehicle routing, map creation, geolocation, and more into your mobile- and web-based apps."
+          }
+        },
+        {
+          "title": "Availability",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(azure.maps.accounts.Availability)/100 As 'Average Availability' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.maps/accounts' FACET azure.maps.accounts.ApiCategory TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "PERCENTAGE"
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Creator usage",
+          "layout": {
+            "column": 7,
+            "row": 4,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(azure.maps.accounts.CreatorUsage) As 'Average Creator Usage' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.maps/accounts' FACET azure.maps.accounts.ServiceName TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "BYTES"
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Usage by api category",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(azure.maps.accounts.Usage) As 'Total Usage' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.maps/accounts' FACET azure.maps.accounts.ApiCategory TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Usage by api",
+          "layout": {
+            "column": 7,
+            "row": 7,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(azure.maps.accounts.Usage) As 'Total Usage' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.maps/accounts' FACET azure.maps.accounts.ApiName TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "COUNT"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": []
+}

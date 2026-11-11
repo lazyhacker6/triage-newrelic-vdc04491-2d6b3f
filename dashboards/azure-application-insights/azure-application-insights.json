@@ -1,0 +1,318 @@
+{
+  "name": "Azure Application Insights",
+  "description": null,
+
+  "pages": [
+    {
+      "name": "Azure Application Insights",
+      "description": null,
+      "widgets": [
+        {
+          "title": "Summary",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 5,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(`azure.insights.components.availabilityResults.availabilityPercentage`) AS 'Average Availability Percentage', AVERAGE(`azure.insights.components.performanceCounters.processCpuPercentage`) AS 'Average Process CPU', AVERAGE(`azure.insights.components.requests.rate`) AS 'Average Server Request Rate', AVERAGE(`azure.insights.components.requests.duration`) AS 'Average Server Response Time' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components'"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 6,
+            "row": 1,
+            "width": 7,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Azure Application Insights\nApplication Insights is an extension of Azure Monitor and provides application performance monitoring (APM) features. APM tools are useful to monitor applications from development, through test and into production."
+          }
+        },
+        {
+          "title": "Server requests",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.insights.components.requests.count`) AS 'Total Server Requests', SUM(`azure.insights.components.requests.failed`) AS 'Total Failed Requests' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Server response time",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(azure.insights.components.requests.duration) AS 'Average Server Response Time' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' FACET `azure.insights.components.request/performancebucket`"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Response time details",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 5,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(azure.insights.components.requests.duration) AS 'Average Server Response Time', AVERAGE(azure.insights.components.pageViews.duration) AS 'Average Page View Load Time', AVERAGE(azure.insights.components.dependencies.duration) AS 'Average Dependency Duration' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "MS"
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Requests in queue",
+          "layout": {
+            "column": 6,
+            "row": 6,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(`azure.insights.components.performanceCounters.requestsInQueue`) AS 'Average HTTP Requests in Application Queue' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Dependency calls",
+          "layout": {
+            "column": 9,
+            "row": 6,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.insights.components.dependencies.count`) AS 'Total Dependency Calls', SUM(`azure.insights.components.dependencies.failed`) AS 'Total Dependency Call Failures' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Trace count",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.insights.components.traces.count`) AS 'Total Traces' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' FACET `azure.insights.components.trace/severityLevel` TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "COUNT"
+            }
+          }
+        },
+        {
+          "title": "Browser timings",
+          "layout": {
+            "column": 5,
+            "row": 9,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(`azure.insights.components.browserTimings.totalDuration`) AS 'Average Browser Page Load Time', AVERAGE(`azure.insights.components.browserTimings.receiveDuration`) AS 'Average Receiving Response Time', AVERAGE(`azure.insights.components.browserTimings.sendDuration`) AS 'Average Send Request Time' , AVERAGE(`azure.insights.components.browserTimings.processingDuration`) AS 'Average Client Processing Time', AVERAGE(`azure.insights.components.browserTimings.networkDuration`) AS 'Average Page Load Network Connect Time' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Exceptions",
+          "layout": {
+            "column": 9,
+            "row": 9,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.insights.components.exceptions.browser`) AS 'Total Browser Exceptions', SUM(`azure.insights.components.exceptions.server`) AS 'Total Server Exceptions' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.insights/components' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": []
+}

@@ -1,0 +1,54 @@
+id: aae62e98-51c4-4e73-82b4-29d9ae95433a
+
+# Name of the quickstart
+slug: golden-signals-for-web-servers
+
+# Title of the quickstart
+title: Golden Signals for Web Servers
+
+# Description of the quickstart
+description: |
+  Golden signals alerts for web servers. Includes alerts and a dashboard for throughput, errors, response time, CPU usage, and memory usage.
+
+# Summary of the quickstart
+summary: |
+  Golden signals alerts for web servers. Includes alerts and a dashboard for throughput, errors, response time, CPU usage, and memory usage.
+
+# Support level: New Relic | Verified | Community
+level: New Relic
+
+# Design
+icon: logo.svg
+
+# Authors of the quickstart
+authors:
+  - New Relic
+  - Alec Swanson
+
+dataSourceIds:
+  - new-relic-infrastructure-agent
+
+documentation:
+  - name: New Relic infrastructure agent
+    description: |
+      Learn how to monitor your hosts with New Relic.
+    url: https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/
+  - name: New Relic language agents
+    description: |
+      Learn how to get in-depth and relevant information about your running software in minutes.
+    url: https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/introduction-apm
+
+keywords:
+  - golden signals
+  - monitoring
+  - SRE
+  - latency
+  - traffic
+  - errors
+  - saturation
+  - site reliability
+
+dashboards:
+  - golden-signals
+alertPolicies:
+  - golden-signals-web

@@ -1,0 +1,12 @@
+id: battlesnake
+displayName: Battlesnake custom events and attributes
+description: Observe your Battlesnake with New Relic custom attributes!
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: battlesnake
+        frameworkConfigId: battlesnake
+      requiresAccount: false
+icon: logo.png

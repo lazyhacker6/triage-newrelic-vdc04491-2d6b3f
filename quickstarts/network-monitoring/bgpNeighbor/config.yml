@@ -1,0 +1,31 @@
+id: 849ad74f-91a2-42de-b062-9aebaf7fbdc1
+slug: bgp-routing-neighbors
+title: BGP Routing Neighbors
+description: |
+  The BGP routing neighbor quickstart provides a dashboard that gives you a summary of the current state of your BGP neighbor connections, as well as example alerts to get you started.
+  Use this quickstart together with New Relic's Network Monitoring feature to use SNMP data to visualize changes to the state of your network.
+summary: |
+  Easily install a curated dashboard and example alerts to monitor the health of your BGP neighbor relationships with New Relic's Network Monitoring.
+level: Verified
+authors:
+  - New Relic
+  - Marc Netterfield
+keywords:
+  - network
+  - networking
+  - kentik
+  - routing
+  - neighbor
+  - bgp
+documentation:
+  - name: Network SNMP collection installation docs
+    url: https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/snmp-performance-monitoring/
+    description: |
+      Install Network Monitoring for SNMP data collection using a simple Docker container.
+dataSourceIds:
+  - network-routers-and-switches
+icon: logo.svg
+dashboards:
+  - bgpNeighbor
+alertPolicies:
+  - bgpNeighbor

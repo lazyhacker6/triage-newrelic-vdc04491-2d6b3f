@@ -1,0 +1,32 @@
+id: 260027d0-9d8f-4a35-a676-73b5ee6c0d2d
+slug: synthetics-availability
+title: Synthetics Availability (Ping)
+description: |
+  # What is Synthetics monitoring?
+  Synthetic monitoring is a suite of automated, scriptable tools to monitor your websites, critical business transactions, and API endpoints. You can simulate user traffic to proactively detect and resolve outages and poor performance of critical endpoints before your customers notice.
+
+  # What is a Synthetics Availability (Ping) check
+  Availabilty or Ping monitors are the simplest type of Synthetics monitor. They simply check to see if an application is online. The synthetic ping monitor uses a simple Java HTTP client to make requests to your site.
+
+  For consistency with other synthetic monitor types, the user agent is identified as Google Chrome. However, the HTTP client is not a full browser, and it does not execute JavaScript. If you need JavaScript functionality, use a simple browser monitor.
+summary: |
+  Availabilty or Ping monitors are the simplest type of monitor. They simply check to see if an application is online.
+level: New Relic
+authors:
+  - New Relic
+keywords:
+  - http
+  - ping
+  - uptime
+  - web
+  - api
+  - url
+  - www
+  - synthetics
+dataSourceIds:
+  - new-relic-synthetics
+documentation:
+  - name: Getting started
+    url: https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/getting-started/get-started-synthetic-monitoring/
+    description: Get started with Synthetic monitoring
+icon: logo.svg

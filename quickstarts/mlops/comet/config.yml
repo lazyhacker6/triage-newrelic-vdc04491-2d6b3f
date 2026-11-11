@@ -1,0 +1,33 @@
+id: dda42643-7efa-4ae3-8cad-5b4406e874e0
+slug: mlops-comet
+title: Comet
+description: |
+  [Comet](https://www.comet.ml/site/) is a machine learning (ML) development platform built to meet the intense demands of enterprise teams deploying ML at scale. Comet’s integration with New Relic allows you to manage and optimize your ML models in production from your New Relic One dashboard. With Comet and New Relic, you can accelerate ML development and realize business value faster.
+summary: |
+  Together, Comet and New Relic extend infrastructure observability to include your machine learning models in production, so you can build better models faster.
+level: New Relic
+authors:
+  - Jacques Verre
+keywords:
+  - mlops
+  - ml-ops
+  - model ops
+  - model-ops
+  - ml
+  - machine learning
+  - ai
+  - comet
+  - observability
+  - monitoring
+  - data monitoring
+  - newrelic partner
+dataSourceIds:
+  - comet
+documentation:
+  - name: Comet Docs
+    url: https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/mlops-integrations/comet-mlops-integration/
+    description: Documentation about Integrating Comet with New Relic
+icon: logo.png
+
+dashboards:
+  - comet

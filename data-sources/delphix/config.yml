@@ -1,0 +1,22 @@
+id: delphix
+displayName: Delphix
+description: |
+  The Delphix integration allows users to import data from the Delphix Platform to monitor usage and trigger the creation of RCA environments.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: delphix
+        frameworkConfigId: delphix
+      requiresAccount: false
+keywords:
+  - delphix
+  - newrelic partner
+  - devops
+  - test data management
+  - database
+  - sre
+categoryTerms:
+  - newrelic partner

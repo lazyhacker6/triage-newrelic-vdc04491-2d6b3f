@@ -1,0 +1,66 @@
+id: 533cdd19-8232-42cb-b134-e7d17bfff581
+slug: databricks
+title: Databricks Integration
+description: |
+  ## Why monitor Databricks
+
+  In the world of big data, Databricks is a mission-critical platform. But
+  making sure your workloads are running efficiently, cost-effectively, and
+  reliably can be challenging.
+
+  The Databricks Integration from New Relic delivers total visibility for your
+  entire Databricks estate, allowing you to troubleshoot, optimize, and connect
+  performance directly to cost - all from a single, unified observability
+  platform.
+
+  ### Databricks quickstart highlights
+
+  The Databricks integration collects a comprehensive suite of telemetry data,
+  including the following:
+
+  - Apache Spark application metrics
+  - Databricks Lakeflow job run metrics
+  - Databricks Lakeflow Spark Declarative Pipeline update metrics
+  - Databricks query metrics
+  - Databricks cluster health metrics and logs
+  - Databricks consumption and cost data
+
+  With the pre-built dashboards in this quickstart, you can quickly visualize
+  and analyze your Databricks workloads to ensure optimal performance and cost
+  efficiency.
+summary: |
+  Gain full visibility into your entire Databricks estate with the comprehensive
+  suite of telemetry data collected by the Databricks Integration
+icon: logo.png
+level: Community
+keywords:
+  - nrlabs
+  - nrlabs-data
+  - apache spark
+  - spark
+  - databricks
+  - newrelic partner
+  - NR1_addData
+  - NR1_sys
+authors:
+  - New Relic Labs
+documentation:
+  - name: Getting Started
+    description: |
+      Follow our Getting Started documentation to quickly instrument your
+      Databricks environment and start visualizing your data in New Relic.
+    url: https://github.com/newrelic/newrelic-databricks-integration?tab=readme-ov-file#getting-started
+  - name: Learn More
+    description: |
+      Learn more about the Databricks Integration in our Usage Guide, including
+      configuration options, telemetry collected, and dashboards included.
+    url: https://github.com/newrelic/newrelic-databricks-integration?tab=readme-ov-file#usage-guide
+dataSourceIds:
+  - databricks
+dashboards:
+  - databricks-spark
+  - databricks-job-runs
+  - databricks-pipeline-updates
+  - databricks-query-metrics
+  - databricks-cluster-health
+  - databricks-consumption-cost

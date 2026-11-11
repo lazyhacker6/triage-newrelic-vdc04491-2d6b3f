@@ -1,0 +1,13 @@
+id: nvidia-triton
+displayName: NVIDIA Triton
+description: |
+  Monitor and analyze your NVIDIA Triton inference server with New Relic.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: nvidia-triton
+        frameworkConfigId: nvidia-triton
+      requiresAccount: false
+icon: logo.png

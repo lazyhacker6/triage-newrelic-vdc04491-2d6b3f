@@ -1,0 +1,13 @@
+id: tvos-mobile
+displayName: tvOS Monitoring
+description: |
+  New Relic's mobile monitoring for tvOS gives you a comprehensive view of your app's performance.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: tvos-mobile
+        frameworkConfigId: ios
+      requiresAccount: false
+icon: logo.svg

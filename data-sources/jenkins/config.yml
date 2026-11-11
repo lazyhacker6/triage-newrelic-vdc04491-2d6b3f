@@ -1,0 +1,20 @@
+id: otel-jenkins-integration
+displayName: Jenkins
+description: |
+  Jenkins is an open source automation server which enables developers around the world to reliably build, test, and deploy their software.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: otel-jenkins-integration
+        frameworkConfigId: otel-jenkins-integration
+      requiresAccount: false
+keywords:
+  - jenkins
+  - opentelemetry
+  - otel
+  - pipelines
+categoryTerms:
+  - open source monitoring

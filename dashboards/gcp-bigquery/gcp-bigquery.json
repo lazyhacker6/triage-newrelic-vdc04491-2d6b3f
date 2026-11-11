@@ -1,0 +1,330 @@
+{
+  "name": "GCP BigQuery",
+  "description": null,
+  "pages": [
+    {
+      "name": "BigQuery",
+      "description": null,
+      "widgets": [
+        {
+          "title": "Summary",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 8,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT LATEST(GcpBigQueryDataSetSample.storage.Tables) AS `Tables`, SUM(GcpBigQueryProjectSample.query.Count) AS `Queries`, MAX(GcpBigQueryProjectSample.query.ExecutionTimes) AS `Maximum Execution Time(s)`, AVERAGE(GcpBigQueryDataSetSample.storage.StoredBytes) AS `Average Stored Bytes` FROM GcpBigQueryDataSetSample, GcpBigQueryProjectSample WHERE (((`eventType`() = 'GcpBigQueryDataSetSample') AND (`provider` = 'GcpBigQueryDataSet')) OR ((`eventType`() = 'GcpBigQueryProjectSample') AND (`provider` = 'GcpBigQueryProject')))"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# GCP Big Query\nBigQuery is Google's serverless, highly scalable, enterprise data warehouse designed to make all your data analysts productive at an unmatched price-performance. Because there is no infrastructure to manage, you can focus on analyzing data to find meaningful insights using familiar SQL without the need for a database administrator."
+          }
+        },
+        {
+          "title": "Tables per dataset",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT LATEST(storage.Tables) AS `Total Tables` FROM GcpBigQueryDataSetSample WHERE (`provider` = 'GcpBigQueryDataSet') FACET entityName"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Stored bytes  per table",
+          "layout": {
+            "column": 7,
+            "row": 4,
+            "width": 5,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(storage.StoredBytes) AS `Storage Usage (byte)` FROM GcpBigQueryDataSetSample WHERE (`provider` = 'GcpBigQueryDataSet') FACET table TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "BYTES"
+            }
+          }
+        },
+        {
+          "title": "Queries by priority",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.pie"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": true
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(query.Count) AS `Queries` FROM GcpBigQueryProjectSample WHERE (`provider` = 'GcpBigQueryProject') FACET priority"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Execution time by priority",
+          "layout": {
+            "column": 4,
+            "row": 7,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.area"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(query.ExecutionTimes) AS `Average Execution Time(s)` FROM GcpBigQueryProjectSample WHERE (`provider` = 'GcpBigQueryProject') FACET priority TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "SECONDS"
+            }
+          }
+        },
+        {
+          "title": "Slots",
+          "layout": {
+            "column": 8,
+            "row": 7,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT MIN(slots.TotalAvailable) AS `Available`, SUM(slots.Allocated) AS `Allocated` FROM GcpBigQueryProjectSample WHERE (`provider` = 'GcpBigQueryProject') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Allocated slots for query jobs",
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(slots.AllocatedForProject) AS `Average Slots Allocated For Project` FROM GcpBigQueryProjectSample WHERE (`provider` = 'GcpBigQueryProject') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Allocated slots per job type",
+          "layout": {
+            "column": 5,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(slots.AllocatedForProjectAndJobType) AS `Allocated Slots For Project And JobType` FROM GcpBigQueryProjectSample WHERE (`provider` = 'GcpBigQueryProject') FACET jobType TIMESERIES AUTO"
+              }
+            ],
+            "nullValues": {
+              "nullValue": "zero"
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Slots used in the reservation",
+          "layout": {
+            "column": 9,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(slots.AllocatedForReservation) AS `Average Slots Total Allocated For Reservation`, AVERAGE(slots.AllocatedForReservation) AS `Average Slots Allocated For Reservation` FROM GcpBigQueryProjectSample WHERE (`provider` = 'GcpBigQueryProject') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": []
+}
+

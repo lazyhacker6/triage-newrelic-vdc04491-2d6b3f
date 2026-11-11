@@ -1,0 +1,19 @@
+id: de3953e3-67c4-482f-819a-09e3a1f4da46
+slug: vmware-tanzu
+description: Kubernetes management built and maintained by VMWare.
+summary: Kubernetes management built and maintained by VMWare.
+icon: logo.svg
+level: New Relic
+authors:
+  - New Relic
+title: VMWare Tanzu
+documentation:
+  - name: VMWare Tanzu installation docs
+    description: Kubernetes management built and maintained by VMWare.
+    url: https://docs.newrelic.com/docs/more-integrations/cloudfoundry-integrations/vmware-tanzu-firehose-nozzle-integration/
+keywords:
+  - infrastructure
+  - kubernetes
+  - k8s
+dataSourceIds:
+  - vmware-tanzu

@@ -1,0 +1,13 @@
+id: ansible-automation-controller
+displayName: Ansible Automation Controller monitoring
+description: |
+  The Ansible Automation Controller integration will enable you to monitor and analyze your Ansible Automation Controller infrastructure.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: ansible-automation-controller
+        frameworkConfigId: ansible-automation-controller
+      requiresAccount: false
+icon: logo.png

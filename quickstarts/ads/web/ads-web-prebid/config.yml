@@ -1,0 +1,22 @@
+id: f673909a-5a3a-44f2-b792-83b41c644c13
+slug: ads-web-prebid
+title: Agent for Prebid
+description: Agent to monitor web applications using Prebid.
+summary: Agent to monitor web applications using Prebid.
+level: Community
+authors:
+  - New Relic Labs
+keywords:
+  - nrlabs
+  - nrlabs-data
+  - ads
+  - tracking
+  - Prebid
+  - NR1_addData
+dataSourceIds:
+  - ads-web-prebid
+documentation:
+  - name: Prebid agent Installation Docs
+    url: https://github.com/newrelic/tracker-prebid-js
+    description: Agent to monitor web applications using Prebid.
+icon: logo.png

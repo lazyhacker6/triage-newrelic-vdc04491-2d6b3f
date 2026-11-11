@@ -1,0 +1,36 @@
+id: e0ffa85c-a9a4-4a39-bd6e-724e7d0fe8c8
+slug: azure-key-vault
+description: |-
+  ## What is Azure Key Vault?
+
+  Azure Key Vault is a cloud service for securely storing and accessing secrets.
+
+  ### Get started!
+
+  Start monitoring Azure Key Vault by connecting Microsoft Azure to New Relic!
+
+  Check out our Azure Key Vault documentation to instrument your cloud service and manage the stability, scalability, and reliability of your systems with New Relic's infrastructure monitoring capabilities.
+
+  ### More info
+
+  Check out the [documentation](https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-key-vault-monitoring-integration) to learn more about New Relic monitoring for Azure Key Vault.
+summary: Monitor Azure Key Vault by connecting Azure to New Relic
+icon: logo.png
+level: New Relic
+authors:
+  - New Relic
+  - Emil Hammarstrand
+title: Azure Key Vault
+documentation:
+  - name: Azure Key Vault installation docs
+    description: Monitor Azure Key Vault by connecting Azure to New Relic.
+    url: https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-key-vault-monitoring-integration
+keywords:
+  - azure
+  - keyvault
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - microsoft-azure
+dashboards:
+  - azure-key-vault

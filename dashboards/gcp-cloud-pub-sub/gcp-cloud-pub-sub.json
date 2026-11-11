@@ -1,0 +1,206 @@
+{
+  "name": "GCP Cloud Pub/Sub",
+  "description": null,
+  "pages": [
+    {
+      "name": "GCP Cloud Pub/Sub",
+      "description": null,
+      "widgets": [
+        {
+          "title": "Summary",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 8,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(GcpPubSubTopicSample.topic.SendRequest) AS `SEND REQUEST COUNT`, SUM(GcpPubSubTopicSample.topic.ConfigUpdates) AS `TOPIC CONFIG UPDATES COUNT`, SUM(GcpPubSubSubscriptionSample.subscription.ConfigUpdates) AS ` SUBSCRIPTION CONFIG UPDATES COUNT` FROM GcpPubSubSubscriptionSample, GcpPubSubTopicSample WHERE (((`eventType`() = 'GcpPubSubTopicSample') AND (`provider` = 'GcpPubSubTopic')) OR ((`eventType`() = 'GcpPubSubSubscriptionSample') AND (`provider` = 'GcpPubSubSubscription'))) SINCE 6 HOURS AGO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Subscription config updates count by responseCode",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(subscription.ConfigUpdates) AS `Subscription config updates count` FROM GcpPubSubSubscriptionSample WHERE (`provider` = 'GcpPubSubSubscription') FACET responseCode TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Topic config updates count by responseCode",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(topic.ConfigUpdates) AS `Topic config updates count` FROM GcpPubSubTopicSample WHERE (`provider` = 'GcpPubSubTopic') FACET responseCode TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Subscription config updates count by operationType",
+          "layout": {
+            "column": 5,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(subscription.ConfigUpdates) AS `Subscription config updates count` FROM GcpPubSubSubscriptionSample WHERE (`provider` = 'GcpPubSubSubscription') FACET operationType TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Topic config updates count by responseCode",
+          "layout": {
+            "column": 9,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(topic.ConfigUpdates) AS `Topic config updates count` FROM GcpPubSubTopicSample WHERE (`provider` = 'GcpPubSubTopic') FACET operationType TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Subscription config updates count by operationType",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(topic.ByteCost) AS `Subscription config updates count` FROM GcpPubSubTopicSample WHERE (`provider` = 'GcpPubSubTopic') FACET responseCode TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": []
+}
+

@@ -1,0 +1,13 @@
+id: metric-api
+displayName: Metric API
+description: |
+  New Relic's Metric API can be used to send metric data to New Relic from a variety of sources. This API is how metrics from some of our integrations and exporters get into New Relic.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: metric-api
+        frameworkConfigId: metric-api
+      requiresAccount: false
+icon: logo.png

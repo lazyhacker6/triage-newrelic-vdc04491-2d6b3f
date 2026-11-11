@@ -1,0 +1,57 @@
+name: Update quickstarts
+
+permissions:
+  contents: write
+  pull-requests: read
+
+env:
+  THIRD_PARTY_GIT_AUTHOR_EMAIL: opensource+bot@newrelic.com
+  THIRD_PARTY_GIT_AUTHOR_NAME: nr-opensource-bot
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  DRY_RUN: false
+  NEW_RELIC_NO_CONFIG_FILE: true
+  NEW_RELIC_LICENSE_KEY: ${{ secrets.NEW_RELIC_LICENSE_KEY }}
+  NEW_RELIC_APP_NAME: ${{ secrets.NEW_RELIC_APP_NAME }}
+  NEW_RELIC_HOST: staging-collector.newrelic.com
+  NODE_ENV: production
+
+on:
+  workflow_run:
+    workflows: ["Submit Gate"]
+    types:
+      - completed
+
+jobs:
+  generate-uuid:
+    name: Generate UUID
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+        with:
+          token: ${{ secrets.OPENSOURCE_BOT_TOKEN }}
+          ref: "release"
+          fetch-depth: 0
+
+      - name: Setup workspace
+        uses: "./.github/actions/bootstrap"
+
+      - name: Generate UUIDs for quickstarts
+        id: generate-uuids
+        run: cd utils && npm run generate-uuids
+
+      - name: Commit changes
+        id: commit-changes
+        run: |
+          git config --local user.email "${{ env.THIRD_PARTY_GIT_AUTHOR_EMAIL }}"
+          git config --local user.name "${{ env.THIRD_PARTY_GIT_AUTHOR_NAME }}"
+
+          # release could have been modified since we checked out, so pull before committing
+          git pull --ff-only origin release
+
+          git add ./quickstarts/*
+          git diff-index --quiet HEAD ./quickstarts/* || { git commit -m 'chore: generate UUID(s) [skip ci]' && echo "commit=true" >> $GITHUB_ENV; }
+
+      - name: Push Commit
+        if: env.commit == 'true'
+        run: git push origin HEAD

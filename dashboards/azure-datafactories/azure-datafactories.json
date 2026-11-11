@@ -1,0 +1,803 @@
+{
+  "name": "Azure-Data-Factories",
+  "description": null,
+  "pages": [
+    {
+      "name": "Overview",
+      "description": null,
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Azure Data Factories Dashboard ![New Relic logo](https://newrelic.com/static-assets/images/icons/avatar-newrelic.png)\n\nMonitor your [Azure Data Factories](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.DataFactory%2FdataFactories) using [New Relic Azure Integration](https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-data-factory-integration/)"
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 2,
+            "width": 6,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Pipelines"
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 7,
+            "row": 2,
+            "width": 6,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Data Factories"
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "--from AzureDataFactoryFactorySample SELECT uniqueCount(pipelineName) as 'Pipeline Count' facet displayName\nfrom AzureDataFactoryFactorySample SELECT  uniques(pipelineName) as 'Pipelines' where displayName IN ({{data_factory_name}})"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.table"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "--from AzureDataFactoryFactorySample SELECT uniqueCount(pipelineName) as 'Pipeline Count' facet displayName\nfrom AzureDataFactoryFactorySample SELECT uniques(displayName), uniqueCount(pipelineName) as 'Pipeline Count',latest(regionName), latest(providerAccountName) where displayName in ({{data_factory_name}})\n"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 5,
+            "width": 6,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Pipeline Runs"
+          }
+        },
+        {
+          "title": "Failed Pipeline Runs",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [
+              {
+                "name": "Failed Pipeline Runs",
+                "type": "humanized"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "--from AzureDataFactoryFactorySample SELECT uniqueCount(pipelineName) as 'Pipeline Count' facet displayName\nfrom AzureDataFactoryFactorySample SELECT  count(pipelineFailedRuns.Total) as 'Failed Pipeline Runs' WHERE displayName IN ({{data_factory_name}})"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": [
+              {
+                "alertSeverity": "CRITICAL",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "title": "Failed Pipeline Runs",
+          "layout": {
+            "column": 4,
+            "row": 6,
+            "width": 3,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "dataFormatters": [
+              {
+                "name": "Failed Pipeline Runs",
+                "type": "humanized"
+              }
+            ],
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "--from AzureDataFactoryFactorySample SELECT uniqueCount(pipelineName) as 'Pipeline Count' facet displayName\nfrom AzureDataFactoryFactorySample SELECT  count(pipelineSucceededRuns.Total) as 'Sucessful Pipeline Runs' WHERE displayName IN ({{data_factory_name}})"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "thresholds": [
+              {
+                "value": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Golden Metrics",
+      "description": null,
+      "widgets": [
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 12,
+            "height": 4
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Azure Data Factories Dashboard ![New Relic logo](https://newrelic.com/static-assets/images/icons/avatar-newrelic.png)\n\n### The Four Golden Signals: Errors, Saturation, Traffic, Latency\n\n![four golden signals](https://drive.google.com/uc?id=14vVtYoS5lhv9XwsSrQ-mp93JXd-ouaaE)\n\n> Monitor your [Azure Data Factories](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.DataFactory%2FdataFactories) using [New Relic Azure Integration](https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-data-factory-integration/)"
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 5,
+            "width": 6,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Traffic"
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 7,
+            "row": 5,
+            "width": 6,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Errors"
+          }
+        },
+        {
+          "title": "Resource count",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`resourceCount.Average`), sum(`resourceCount.Total`), max(`resourceCount.Maximum`), min(`resourceCount.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Pipeline succeeded runs",
+          "layout": {
+            "column": 4,
+            "row": 6,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`pipelineSucceededRuns.Average`), sum(`pipelineSucceededRuns.Total`), max(`pipelineSucceededRuns.Maximum`), min(`pipelineSucceededRuns.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Pipeline cancelled runs",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`pipelineCancelledRuns.Average`), sum(`pipelineCancelledRuns.Total`), max(`pipelineCancelledRuns.Maximum`), min(`pipelineCancelledRuns.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Activity failed runs",
+          "layout": {
+            "column": 10,
+            "row": 6,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`activityFailedRuns.Average`), sum(`activityFailedRuns.Total`), max(`activityFailedRuns.Maximum`), min(`activityFailedRuns.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Activity succeeded runs",
+          "layout": {
+            "column": 1,
+            "row": 8,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`activitySucceededRuns.Average`), sum(`activitySucceededRuns.Total`), max(`activitySucceededRuns.Maximum`), min(`activitySucceededRuns.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Trigger succeeded runs",
+          "layout": {
+            "column": 4,
+            "row": 8,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`triggerSucceededRuns.Average`), sum(`triggerSucceededRuns.Total`), max(`triggerSucceededRuns.Maximum`), min(`triggerSucceededRuns.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Trigger failed runs",
+          "layout": {
+            "column": 7,
+            "row": 8,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`triggerFailedRuns.Average`), sum(`triggerFailedRuns.Total`), max(`triggerFailedRuns.Maximum`), min(`triggerFailedRuns.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Pipeline failed runs",
+          "layout": {
+            "column": 10,
+            "row": 8,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`pipelineFailedRuns.Average`), sum(`pipelineFailedRuns.Total`), max(`pipelineFailedRuns.Maximum`), min(`pipelineFailedRuns.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "width": 6,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Latency"
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 7,
+            "row": 10,
+            "width": 6,
+            "height": 1
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Saturation"
+          }
+        },
+        {
+          "title": "Integration runtime average task pickup delay seconds",
+          "layout": {
+            "column": 1,
+            "row": 11,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`integrationRuntimeAverageTaskPickupDelaySeconds.Average`), sum(`integrationRuntimeAverageTaskPickupDelaySeconds.Total`), max(`integrationRuntimeAverageTaskPickupDelaySeconds.Maximum`), min(`integrationRuntimeAverageTaskPickupDelaySeconds.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Max allowed resource count",
+          "layout": {
+            "column": 7,
+            "row": 11,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`maxAllowedResourceCount.Average`), sum(`maxAllowedResourceCount.Total`), max(`maxAllowedResourceCount.Maximum`), min(`maxAllowedResourceCount.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Integration runtime available memory bytes",
+          "layout": {
+            "column": 10,
+            "row": 11,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`integrationRuntimeAvailableMemoryBytes.Average`), sum(`integrationRuntimeAvailableMemoryBytes.Total`), max(`integrationRuntimeAvailableMemoryBytes.Maximum`), min(`integrationRuntimeAvailableMemoryBytes.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Integration runtime queue length",
+          "layout": {
+            "column": 7,
+            "row": 13,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`integrationRuntimeQueueLength.Average`), sum(`integrationRuntimeQueueLength.Total`), max(`integrationRuntimeQueueLength.Maximum`), min(`integrationRuntimeQueueLength.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Integration runtime available node number",
+          "layout": {
+            "column": 10,
+            "row": 13,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`integrationRuntimeAvailableNodeNumber.Average`), sum(`integrationRuntimeAvailableNodeNumber.Total`), max(`integrationRuntimeAvailableNodeNumber.Maximum`), min(`integrationRuntimeAvailableNodeNumber.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Integration runtime cpu percentage percent",
+          "layout": {
+            "column": 7,
+            "row": 15,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`integrationRuntimeCpuPercentagePercent.Average`), sum(`integrationRuntimeCpuPercentagePercent.Total`), max(`integrationRuntimeCpuPercentagePercent.Maximum`), min(`integrationRuntimeCpuPercentagePercent.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Max allowed factory size in gb units",
+          "layout": {
+            "column": 10,
+            "row": 15,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT average(`maxAllowedFactorySizeInGbUnits.Average`), sum(`maxAllowedFactorySizeInGbUnits.Total`), max(`maxAllowedFactorySizeInGbUnits.Maximum`), min(`maxAllowedFactorySizeInGbUnits.Minimum`) FROM AzureDataFactoryFactorySample WHERE ((`provider` = 'AzureDataFactoryFactory') AND (entityName IN ({{data_factory_name}}))) TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "name": "data_factory_name",
+      "items": null,
+      "defaultValues": [],
+      "nrqlQuery": {
+        "accountIds": [],
+        "query": "from AzureDataFactoryFactorySample SELECT uniques(displayName)\n"
+      },
+      "title": "Data Factory Name",
+      "type": "NRQL",
+      "isMultiSelection": false,
+      "replacementStrategy": "STRING"
+    }
+  ]
+}

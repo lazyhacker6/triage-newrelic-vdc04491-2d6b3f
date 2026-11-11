@@ -1,0 +1,26 @@
+id: network-routers-and-switches
+displayName: Network Routers and Switches
+description: |
+  The Network Routers and Switches datasource provides a dashboard that gives you a holistic view of the interface traffic across all of the routers and switches in your network.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: network-performance-monitoring.setup-snmp
+      requiresAccount: true
+  fallback:
+    link:
+      url: https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/snmp-performance-monitoring/
+keywords:
+  - npm
+  - network
+  - networking
+  - router
+  - switch
+  - snmp
+  - ktranslate
+  - kentik
+  - infrastructure
+  - newrelic partner
+categoryTerms:
+  - newrelic partner

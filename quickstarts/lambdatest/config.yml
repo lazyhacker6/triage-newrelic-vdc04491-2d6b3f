@@ -1,0 +1,104 @@
+id: d05d8fc5-b6cb-46aa-a5d8-06ef5d6fb0af
+slug: lambdatest
+title: TestMu AI (Formerly LambdaTest)
+description: |
+  ## About TestMu AI (Formerly LambdaTest)
+
+  TestMu AI (Formerly LambdaTest) is a Full Stack Agentic AI Quality Engineering platform that empowers teams to test intelligently and ship faster.
+
+  Engineered for scale, it offers end-to-end AI agents to plan, author, execute, and analyze software quality. AI-native by design, the platform enables testing of web, mobile, and enterprise applications at any scale across real devices, real browsers, and custom real-world environments.
+
+  TestMu AI Agents accelerate your testing throughout the entire SDLC, moving beyond automation to agentic intelligence, where AI-driven agents continuously enhance the speed, accuracy, and depth of testing across the development lifecycle.
+
+  LambdaTest rebranded to TestMu AI on January 12, 2026; the platform, team, infrastructure, and existing customer accounts are unchanged.
+
+  ## TestMu AI and New Relic Integration
+
+  This integration brings an out-of-the-box dashboard that lets you visualize and understand your testing metrics in real time, set against the broader application performance insights New Relic already provides.
+
+  ## TestMu AI Dashboard and Visualization
+
+  Once integrated, the TestMu AI Dashboard in New Relic gives a high-level view of test executions, failures, and browser and device compatibility issues, so you always know the quality of your web or mobile applications.
+
+  ### Test Overview
+
+  - Holistic view of automated testing activities.
+  - Key metrics such as test execution counts, pass rates and durations.
+  - Insights on website compatibility across different browsers and devices.
+
+  ### Test Errors Overview
+
+  - Deep insights into test failures and anomalies.
+  - Highlights the nature and frequency of errors.
+  - Provides information on environments where errors occurred.
+
+  ### HyperExecute Overview
+
+  - Monitors HyperExecute, the AI-native test orchestration cloud that runs tests up to 70% faster than traditional cloud grids.
+  - Tracks HyperExecute jobs, tasks, and stages in a single view.
+  - Breaks down task status ratios to pinpoint orchestration bottlenecks.
+
+  ## More about TestMu AI (Formerly LambdaTest)
+
+  Trusted by 3M+ users and 18K+ enterprises across 132 countries, with 1.5B+ tests run.
+
+  - **KaneAI**: GenAI-native agent that authors end-to-end tests in natural language.
+  - **Kane CLI**: Natural-language browser automation from the terminal, for developers and AI agents.
+  - **Agent Assurance**: Proves an AI agent is safe to ship by generating the suite from your code or spec, running the agent for real, and grading what it actually did.
+  - **Agent Testing**: Tests chat, voice and video AI agents for hallucination, bias and tone.
+  - **Test Management**: AI-native test case management with two-way Jira and Azure DevOps sync.
+  - **SmartUI**: Visual regression testing that cuts false positives by up to 95%.
+  - **Accessibility Testing Agent**: WCAG, ADA and Section 508 checks for web, mobile and PDFs.
+  - **Agentic Test Cloud Platform**: Autonomous end-to-end testing at scale.
+  - **Real Devices Cloud**: Testing on 10,000+ real iOS and Android devices.
+  - **Test Automation Platform**: Selenium, Playwright, Cypress and Puppeteer on a cloud grid.
+  - **Native App Automation Cloud**: Appium, Espresso and XCUITest on real devices and emulators.
+  - **HyperExecute**: Test orchestration that runs suites up to 70% faster.
+  - **Browser Cloud**: Scalable browser infrastructure for AI agents, with stealth mode.
+  - **TestMu AI MCP Server**: Connects Claude, Cursor and Copilot to TestMu AI test data.
+  - **Accessibility DevTools**: Chrome extension for full-page, workflow and keyboard scans.
+  - **Test Insights**: Flaky test detection, failure clustering and root cause analysis.
+
+
+
+
+# Displayed in search results and recommendations. Summarizes a quickstarts functionality.
+
+summary: |
+  TestMu AI (formerly LambdaTest) offers a streamlined entry into agentic AI-native test automation. With just a few clicks, users can instantly set up, monitor, and evaluate their application's test execution and performance.
+level: Community
+authors:
+  - Prateek Saini
+  - Rahul Jain
+  - TestMu AI (Formerly LambdaTest)
+keywords:
+  - testmu ai
+  - testmuai
+  - agentic ai testing
+  - ai quality engineering
+  - hyperexecute
+  - kaneai
+  - lambdatest
+  - logs
+  - newrelic partner
+  - devops
+  - cicd
+  - testing
+  - cross-browser
+  - featured
+  - NR1_addData
+
+documentation:
+  - name:  TestMu AI installation docs
+    description: Set up the New Relic integration within the TestMu AI UI.
+    url: https://www.testmuai.com/support/docs/new-relic-integration/
+# Reference to install plans located under /install directory
+# Allows us to construct reusable "install plans" and just use their ID in the quickstart config
+
+dataSourceIds:
+  - lambdatest
+
+icon: logo.svg
+
+dashboards:
+  - lambdatest

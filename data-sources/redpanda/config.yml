@@ -1,0 +1,13 @@
+id: redpanda
+displayName: Redpanda
+description: |
+  With our infrastructure agent and Prometheus integration, you can track your Redpanda data. See your Redpanda scheduling groups, service errors, and uptime.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: redpanda
+        frameworkConfigId: redpanda
+      requiresAccount: false
+icon: logo.png

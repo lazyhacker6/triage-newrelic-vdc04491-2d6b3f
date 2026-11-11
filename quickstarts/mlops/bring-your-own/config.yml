@@ -1,0 +1,26 @@
+id: 2ea87c6d-f819-4d41-b885-002b13bad099
+slug: mlops-bring-your-own
+title: Build your own ML Integration
+description: |
+  With bring your own data (BYO), after just a few minutes, you can quickly send your model's inference and metric data to the New Relic platform, directly from a notebook or any other environment.# Displayed in search results and recommendations. Summarizes a quickstarts functionality.
+summary: |
+  Bring your own data from any kind of ML stack with this flexible integration framework to keep your data-science projects on track.
+level: Community
+authors:
+  - New Relic
+keywords:
+  - mlops
+  - ml
+  - ai
+  - bring-your-own
+  - machine-learning
+dataSourceIds:
+  - bring-your-own-data
+documentation:
+  - name: Bring your own data repo
+    url: https://github.com/newrelic-experimental/ml-performance-monitoring
+    description: Documentation on how to bring your own ML data
+icon: logo.svg
+
+alertPolicies:
+  - bring-your-own-data

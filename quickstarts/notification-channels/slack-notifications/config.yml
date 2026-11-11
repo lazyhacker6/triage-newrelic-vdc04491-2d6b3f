@@ -1,0 +1,38 @@
+id: db34c333-7b4a-4bb8-8fbf-becce43bfa44
+
+title: Slack Notifications
+
+slug: slack-notifications
+description: |
+
+  Slack is a a messaging app for business that connects people to the information that they need.
+
+  Integrate New Relic with Slack to send notification messages to your Slack channels.
+
+  [Check out our documentation](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#slack) to set up a Slack notification channel and provide fast and consistent ways for the right personnel to be notified about incidents
+
+summary: |
+  Send your New Relic alerts to Slack
+
+icon: logo.png
+
+level: New Relic
+
+authors:
+  - Matan Moser (New Relic)
+  - Ismail Azam (New Relic)
+
+documentation:
+  - name: Slack installation docs
+    url: https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/notification-integrations/#slack
+    description: If you use Slack to communicate with your organization, you can create a Slack workflow that sends notifications from New Relic to Slack. Check out our documentation so you can integrate Slack and New Relic.
+
+keywords:
+  - slack
+  - notifications
+  - AIOps
+  - Incident Intelligence
+  - Destinations
+
+dataSourceIds:
+  - slack-notifications

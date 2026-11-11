@@ -1,0 +1,50 @@
+id: 924fd4b3-a6d1-4a6e-9e2c-b598f197f713
+slug: ibmmq
+title: IBM MQ (Infrastructure Agent)
+description: |
+  ## IBM MQ performance
+
+  IBM MQ allows independent and potentially non-concurrent applications on a distributed system to securely communicate with each other, using messages.
+
+  The IBM MQ integration allows you to monitor the performance of MQ Objects like channels and queues . The metrics collected include depth of your queues, how much space your queues have for additional messages, and the age of a queue’s oldest message. Analyzing metrics over time allows you to scale your instances accordingly in order to prevent full queues, which can delay message delivery.
+
+  ### IBM MQ quickstart highlights
+
+  The IBM MQ quickstart automatically instruments your IBM MQ infrastructure, and comes pre-built dashboard visualizing:
+  - Total of Connections
+  - Connections by Queue Manager
+  - Total of Errors
+  - Errors  by Queue Manager
+  - Total of Messages
+  - Messages by Queue Manager
+  - Messages by Queue
+  - Queue Depth
+  - Expired messages by Queue
+  - Filesystem usage
+summary: |
+  The IBM MQ integration enables performance monitoring of IBM MQ infrastructure.
+level: New Relic
+icon: logo.png
+
+keywords:
+  - infrastructure
+  - ibm mq
+  - ibm-mq
+  - ibmmq
+  - mq
+  - messaging
+  - queue
+  - NR1_addData
+  - NR1_sys
+
+authors:
+  - New Relic
+documentation:
+  - name: IBM MQ monitoring integration
+    description: |
+      Our IBM MQ integration collects and sends dimensional metrics from IBM MQ.
+    url: https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/ibmmq-monitoring-integration/
+dataSourceIds:
+  - ibmmq-integration-docs
+dashboards:
+  - ibmmq

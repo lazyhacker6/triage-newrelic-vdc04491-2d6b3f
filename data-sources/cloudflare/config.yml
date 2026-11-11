@@ -1,0 +1,25 @@
+id: cloudflare
+displayName: Cloudflare Network Logs
+description: |
+  The Cloudflare quickstart will enable you to monitor and analyze web traffic metrics.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: cloudflare
+        frameworkConfigId: cloudflare
+      requiresAccount: false
+keywords:
+  - cloudflare
+  - logs
+  - network
+  - security
+  - cdn
+  - featured
+  - newrelic partner
+categoryTerms:
+  - newrelic partner
+  - logs
+  - network

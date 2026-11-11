@@ -1,0 +1,19 @@
+id: envoy
+displayName: Envoy
+description: |
+  Enhance the performance monitoring and instrumentation of your Envoy by integrating New Relic.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: envoy
+        frameworkConfigId: envoy
+      requiresAccount: false
+keywords:
+  - envoy
+  - envoy proxy
+  - edge gateway
+  - proxy
+ 

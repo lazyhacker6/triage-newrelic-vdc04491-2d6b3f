@@ -1,0 +1,26 @@
+id: speedscale
+displayName: Speedscale
+description: |
+  Speedscale is a traffic replay platform.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: speedscale
+        frameworkConfigId: speedscale
+      requiresAccount: false
+  fallback:
+    link:
+      url: https://docs.speedscale.com/reference/integrations/new-relic
+keywords:
+  - traffic
+  - replay
+  - simulate
+  - report
+  - newrelic partner
+  - featured
+categoryTerms:
+  - newrelic partner
+  - synthetics

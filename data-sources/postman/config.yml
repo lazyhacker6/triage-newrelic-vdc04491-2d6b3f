@@ -1,0 +1,20 @@
+id: postman
+displayName: Postman
+description: |
+  Observe the performance of your APIs using Postman and New Relic
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: postman
+        frameworkConfigId: postman
+      requiresAccount: false
+keywords:
+  - api
+  - postman
+  - newrelic partner
+  - featured
+categoryTerms:
+  - newrelic partner

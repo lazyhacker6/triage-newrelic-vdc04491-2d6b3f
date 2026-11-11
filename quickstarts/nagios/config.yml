@@ -1,0 +1,25 @@
+id: a55b5d3b-bff6-4caa-b56f-b28dfa3fc94b
+slug: nagios
+title: Nagios
+description: |
+  Use the New Relic Nagios On Host Integration to run Nagios custom scripts and display the data in New Relic.
+summary: |
+  Run your custom Nagios scripts and see the data in New Relic
+level: New Relic
+icon: logo.jpeg
+
+authors:
+  - New Relic
+  - Jakub Kotkowiak
+documentation:
+  - name: Nagios
+    description: |
+      Nagios is a free and open-source computer-software application that monitors systems, networks and infrastructure.
+    url: https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/nagios-monitoring-integration/
+dataSourceIds:
+  - nagios
+keywords:
+  - infrastructure
+  - open source monitoring
+dashboards:
+  - nagios

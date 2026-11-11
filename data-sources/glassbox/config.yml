@@ -1,0 +1,17 @@
+id: glassbox
+displayName: Glassbox
+description: |
+  Glassbox empowers organizations to create frictionless digital journeys for their customers.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://support.glassbox.com/hc/en-gb/articles/4405777280401-How-to-Connect-New-Relic
+keywords:
+  - glassbox
+  - newrelic partner
+  - digital
+  - session replay
+  - featured
+categoryTerms:
+  - newrelic partner

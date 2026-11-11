@@ -1,0 +1,24 @@
+id: network-syslog
+displayName: Network Syslog
+description: |
+  Install NPM for syslog collection using a simple Docker container.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: network-performance-monitoring.setup-syslog
+      requiresAccount: true
+  fallback:
+    link:
+      url: https://docs.newrelic.com/docs/network-performance-monitoring/setup-performance-monitoring/network-syslog-monitoring/
+keywords:
+  - npm
+  - network
+  - networking
+  - logging
+  - ktranslate
+  - kentik
+  - infrastructure
+  - newrelic partner
+categoryTerms:
+  - newrelic partner

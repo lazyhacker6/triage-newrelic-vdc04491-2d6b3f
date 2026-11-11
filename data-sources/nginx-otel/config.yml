@@ -1,0 +1,31 @@
+id: nginx-opentelemetry
+displayName: NGINX (OpenTelemetry Collector)
+description: |
+  Monitor NGINX instances using OpenTelemetry Collector. Collect comprehensive metrics from connections, requests, client errors, server errors, and more across self-hosted and Kubernetes deployments.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: nginx-opentelemetry
+        frameworkConfigId: nginx-otel
+      requiresAccount: false
+icon: logo.svg
+
+keywords:
+  - infrastructure
+  - open source
+  - open-source
+  - open telemetry
+  - otel nginx
+  - opentelemetry nginx
+  - host nginx
+  - kubernetes nginx
+  - nginx plus
+  - nginxplus
+  - load balancer
+
+
+categoryTerms:
+  - open source monitoring
+  - infrastructure

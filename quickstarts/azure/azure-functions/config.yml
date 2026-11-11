@@ -1,0 +1,39 @@
+id: 6ded839e-9df7-46db-8df9-e734cea1bd68
+slug: azure-functions-infrastructure
+description: |-
+  ## What is Azure Functions?
+
+  Event-driven serverless compute platform that enables you to build locally and
+  deploy on the cloud.
+
+
+  ### Get started!
+
+  Start monitoring Azure Functions by connecting Microsoft Azure to New Relic!
+
+  Check out our Azure Functions documentation to instrument your cloud service and manage the stability, scalability, and reliability of your systems with New Relic's infrastructure monitoring capabilities.
+
+  ### More info
+
+  Check out the [documentation](https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-functions-monitoring-integration/) to learn more about New Relic monitoring for Azure Functions.
+summary: Monitor Azure Functions by connecting Azure to New Relic
+icon: logo.svg
+level: New Relic
+authors:
+  - New Relic
+  - Emil Hammarstrand
+title: Azure Functions Infrastructure
+documentation:
+  - name: Azure Functions installation docs
+    description: |
+      Monitor Azure Functions by connecting Azure to New Relic.
+    url: https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-functions-monitoring-integration/
+keywords:
+  - azure
+  - serverless
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - microsoft-azure
+dashboards:
+  - azure-functions

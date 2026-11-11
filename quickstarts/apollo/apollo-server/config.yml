@@ -1,0 +1,49 @@
+id: 7befa2d3-aaa2-4e67-93a8-364f8d746b90
+slug: apollo-server
+title: Apollo Server
+description: |
+  ## What is Apollo Server?
+
+  Apollo Server is an open-source, spec-compliant GraphQL server that's compatible with any GraphQL client, including Apollo Client. It's the best way to build a production-ready, self-documenting GraphQL API that can use data from any source.
+
+  You can use Apollo Server as:
+
+  - A stand-alone GraphQL server, including in a serverless environment
+  - An add-on to your application's existing Node.js middleware (such as Express or Fastify)
+  - A gateway for a federated graph
+
+  ### Apollo & New Relic
+
+  The New Relic Apollo Server plugin instruments your Apollo Server applications to give visibility into your GraphQL payloads. This helps you uncover and diagnose the cause of your slow GraphQL queries.
+summary: |
+  The New Relic Apollo Server plugin instruments your Apollo Server applications to give visibility into your GraphQL payloads. This helps you uncover and diagnose the cause of your slow GraphQL queries.
+level: Community
+authors:
+  - New Relic
+  - John Vajda
+  - Dave Miyamasu
+keywords:
+  - apollo server
+  - apollo
+  - graphql
+  - nodejs
+  - npm
+  - plugin
+  - typescript
+  - express
+  - hapi
+  - koa
+  - fastify
+  - NR1_addData
+dashboards:
+  - apollo-server
+dataSourceIds:
+  - node-js
+documentation:
+  - name: Installation Docs
+    url: https://docs.newrelic.com/docs/apm/agents/nodejs-agent/extend-your-instrumentation/apollo-server-plugin-nodejs/
+    description: The New Relic Apollo Server plugin instruments your Apollo Server applications to give visibility into your GraphQL payloads.
+  - name: New Relic Apollo Server plugin repository
+    url: https://github.com/newrelic/newrelic-node-apollo-server-plugin/blob/main/README.md
+    description: New Relic's official Apollo Server plugin for use with the Node.js agent.
+icon: logo.png

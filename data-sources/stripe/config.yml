@@ -1,0 +1,18 @@
+id: stripe
+displayName: Stripe
+description: |
+  Get insights into your Stripe observability data to improve your business.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: stripe
+        frameworkConfigId: stripe
+      requiresAccount: false
+icon: logo.png
+keywords:
+  - stripe
+  - node.js
+  - stripe payment
+  - stripe checkout

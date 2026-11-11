@@ -1,0 +1,9 @@
+id: lambdatest
+displayName: TestMu AI (Formerly LambdaTest)
+description: |
+  TestMu AI (formerly LambdaTest) is a full-stack agentic AI quality engineering platform to run manual and automated tests at scale, across 3,000+ browsers and 10,000+ real devices.
+install:
+  primary:
+    link:
+      url: https://www.testmuai.com/support/docs/new-relic-integration/
+icon: logo.svg

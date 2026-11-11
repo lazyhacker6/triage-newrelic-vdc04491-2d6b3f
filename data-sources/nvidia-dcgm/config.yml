@@ -1,0 +1,24 @@
+id: nvidia-dcgm
+displayName: NVIDIA DCGM
+description: |
+  Monitor and analyze your NVIDIA DCGM infrastructure with New Relic.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: nvidia-dcgm
+        frameworkConfigId: nvidia-dcgm
+      requiresAccount: false
+icon: logo.png
+keywords:
+  - NVIDIA DCGM
+  - AI Acceleration
+  - Machine Learning Acceleration
+  - GPU Management
+  - AI Management
+  - Machine Learning Management
+  - Deep Learning Performance
+  - AI Performance
+  - GPU Optimization
+  - AI Optimization

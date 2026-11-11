@@ -1,0 +1,39 @@
+id: 8e31a0ae-81c0-4df0-a119-a0ada9ec16fa
+slug: infrastructure-integrations-data-analysis
+title: Infrastructure Integrations Data Analysis
+description: |
+  This quickstart provides several dashboards to analyze overall data ingest created by the various Infrastructure On-Host, Cloud, and Kubernetes integrations that contribute to the "Infrastructure integrations" portion of the Data Management Hub.
+  Additional pages have been added that analyze data ingest created by Pixie, Prometheus, and AWS CloudWatch Metric Stream integrations, which are associated with infrastructure data, but feed other categories of the Data Management Hub.
+summary: |
+  Dashboards designed to analyze data ingest from "Infrastructure Integrations" category in the Data Management Hub.
+level: New Relic
+authors:
+  - Zack Mutchler
+keywords:
+  - audit
+  - data ingest
+  - infrastructure
+  - k8s
+  - kubernetes
+  - on-host integration
+  - ohi
+  - prometheus
+  - pomi
+  - remote-write
+  - pixie
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - telemetry-data-platform
+documentation:
+  - name: Data Management Hub
+    url: https://docs.newrelic.com/docs/data-apis/manage-data/manage-your-data/
+    description: |
+      New Relic Data Management Hub
+icon: logo.svg
+dashboards:
+  - aws-integrations-data-ingest-analysis
+  - azure-integrations-data-ingest-analysis
+  - gcp-integrations-data-ingest-analysis
+  - kubernetes-data-ingest-analysis
+  - on-host-integrations-data-analysis

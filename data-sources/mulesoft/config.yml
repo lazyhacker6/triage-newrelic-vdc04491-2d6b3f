@@ -1,0 +1,20 @@
+id: mule-esb
+displayName: Mule ESB
+description: |
+  Mule is a lightweight Java-based enterprise service bus (ESB) and integration platform. Leverage community expertise and instantly get value out of your telemetry data. Automatically instrument Mule ESB with the New Relic Java agent.
+
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: setup-nerdlets.setup-java-integration
+      requiresAccount: true
+  fallback:
+    link:
+      url: https://docs.newrelic.com/docs/agents/java-agent/getting-started/compatibility-requirements-java-agent
+keywords:
+  - apm
+  - java
+  - newrelic partner
+categoryTerms:
+  - newrelic partner

@@ -1,0 +1,12 @@
+id: grafana-prometheus-integration
+displayName: Grafana Prometheus Integration
+description: In Grafana, you can configure New Relic as a Prometheus data source.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: grafana-prometheus-integration
+        frameworkConfigId: grafana-prometheus-integration
+      requiresAccount: false
+icon: logo.png

@@ -1,0 +1,25 @@
+id: 30b8f247-a3c9-4f48-bcb5-9a02a398fc4b
+slug: heroku-logs
+title: Heroku logs
+description: |
+  Heroku is a Platform as a Service (PaaS) solution for hosting web applications in various agent languages. With New Relic, you can extend Heroku with logs from your applications and analyse them within New Relic.
+summary: |
+  Ingest and Analyse your Heroku logs in New Relic
+level: New Relic
+authors:
+  - New Relic
+keywords:
+  - logs
+  - heroku
+  - paas
+dataSourceIds:
+  - heroku
+documentation:
+  - name: Stream Logs from Heroku
+    url: https://docs.newrelic.com/docs/logs/enable-log-management-new-relic/enable-log-monitoring-new-relic/heroku-log-forwarding/
+    description: You can stream your Heroku logs to New Relic using Heroku's built-in Logplex router.
+icon: logo.svg
+
+dashboards:
+  - heroku-connect
+  - heroku-dyno-db

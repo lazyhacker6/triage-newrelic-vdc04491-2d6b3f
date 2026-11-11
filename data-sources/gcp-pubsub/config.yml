@@ -1,0 +1,9 @@
+id: gcp-pubsub
+displayName: Google Cloud Pub/Sub Java Agent Extension
+description: |
+  Java agent extension to monitor Google Cloud Pub/Sub with New Relic. Once installed, the instrumentation will monitor both the publish and the subscribe of messages sent via the PubSub framework.
+install:
+  primary:
+    link:
+      url: https://github.com/newrelic-experimental/newrelic-java-gcp-pubsub
+icon: logo.svg

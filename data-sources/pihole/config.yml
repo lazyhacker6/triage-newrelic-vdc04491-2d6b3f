@@ -1,0 +1,17 @@
+id: pihole
+displayName: PiHole
+description: |
+  A PiHole is a free DNS server utility that runs on a Raspberry Pi (or other inexpensive device) and captures DNS requests before they're sent out of the network, filtering discrete elements that are spam, harmful, or wasteful.
+
+icon: logo.svg
+install:
+  primary:
+    link:
+      url: https://github.com/newrelic/nri-flex
+keywords:
+  - pihole
+  - dns
+  - flex
+  - api
+categoryTerms:
+  - infrastructure

@@ -1,0 +1,13 @@
+id: lighttpd
+displayName: Lighttpd
+description: |
+  With our Lighttpd integration you can monitor the performance of your web server. See your uptime, network in bytes and packets, number of requests, and more.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: lighttpd
+        frameworkConfigId: lighttpd
+      requiresAccount: false
+icon: logo.png

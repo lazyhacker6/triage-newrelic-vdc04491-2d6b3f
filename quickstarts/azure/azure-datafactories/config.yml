@@ -1,0 +1,41 @@
+id: 17f25003-8917-4e5f-bcd1-86f2bbe367ef
+slug: azure-datafactories
+description: |-
+  ## What is Azure DataFactories?
+
+  Visual environment for creating and processing ETL operations from multiple
+  data sources.
+
+
+  ### Get started!
+
+  Start monitoring Azure DataFactories by connecting Microsoft Azure to New Relic!
+
+  Check out our Azure DataFactories documentation to instrument your cloud service and manage the stability, scalability, and reliability of your systems with New Relic's infrastructure monitoring capabilities.
+
+  ### More info
+
+  Check out the [documentation](https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-data-factory-integration/) to learn more about New Relic monitoring for Azure DataFactories.
+summary: Monitor Azure DataFactories by connecting Azure to New Relic
+icon: logo.svg
+level: New Relic
+authors:
+  - New Relic
+  - Dave Miyamasu
+title: Azure DataFactories
+documentation:
+  - name: Azure DataFactories installation docs
+    description: |
+      Monitor Azure DataFactories by connecting Azure to New Relic.
+    url: https://docs.newrelic.com/docs/infrastructure/microsoft-azure-integrations/azure-integrations-list/azure-data-factory-integration/
+keywords:
+  - azure
+  - etl
+  - data factory
+  - pipeline
+  - NR1_addData
+  - NR1_sys
+dashboards:
+  - azure-datafactories
+dataSourceIds:
+  - microsoft-azure

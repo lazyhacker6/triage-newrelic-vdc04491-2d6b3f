@@ -1,0 +1,13 @@
+id: nextcloud
+displayName: Nextcloud
+description: |
+  Use our infrastructure agent and the Prometheus open metric integration to monitor the performance of the processes on your Nextcloud server.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: nextcloud
+        frameworkConfigId: nextcloud
+      requiresAccount: false
+icon: logo.png

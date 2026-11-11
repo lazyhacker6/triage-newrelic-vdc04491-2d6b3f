@@ -1,0 +1,42 @@
+id: fdc99da8-0061-4c5f-bd90-ef67a8b2419f
+slug: bitbucket
+title: Bitbucket
+description: |
+  ## Atlassian Bitbucket quickstart
+
+  ### About Bitbucket
+
+  With best-in-class Jira integration, and built-in CI/CD, Bitbucket Cloud is the native Git tool in Atlassian’s Open DevOps solution.
+
+  ### About this quickstart
+
+  This quickstart is built around a [Bitbucket Pipe](https://bitbucket.org/product/features/pipelines/integrations) integration. This tool will enable you to send CI/CD events into New Relic, where you can monitor your Bitbucket Pipelines.
+
+  With this visualization you can monitor:
+    - Number of events/pipeline builds
+    - Track priority events
+    - Real time event log from your pipeline
+    - Events and priority events over time
+summary: |
+  Monitor your Bitbucket Pipeline.
+level: Community
+authors:
+  - Joseph Counts (New Relic)
+keywords:
+  - atlassian
+  - bitbucket
+  - cicd
+  - newrelic partner
+  - pipeline
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - bitbucket
+documentation:
+  - name: Bitbucket pipe integration docs
+    url: https://bitbucket.org/product/features/pipelines/integrations?p=jcountsnr/newrelic_observability_event
+    description: Bitbucket pipe integration to send an event to New Relic from your Bitbucket pipeline.
+icon: logo.svg
+
+dashboards:
+  - bitbucket

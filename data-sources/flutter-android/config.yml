@@ -1,0 +1,19 @@
+id: flutter-android
+displayName: Flutter Android
+description: |
+  Identify and optimize Flutter Android app performance with New Relic Flutter Android monitoring.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: flutter-android
+        frameworkConfigId: flutter-android
+      requiresAccount: false
+keywords:
+  - flutter
+  - flutter android application
+  - android agent
+  - flutter agent
+  - android

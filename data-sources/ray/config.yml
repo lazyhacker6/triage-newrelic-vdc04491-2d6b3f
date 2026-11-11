@@ -1,0 +1,21 @@
+id: ray
+displayName: Ray
+description: Monitor the performance of Ray using New Relic monitoring.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: ray
+        frameworkConfigId: ray
+      requiresAccount: false
+icon: logo.svg
+keywords:
+  - ray
+  - python
+  - python3
+  - mlops
+  - ai
+  - generative ai
+  - machine learning
+  - artificial intelligence

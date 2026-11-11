@@ -1,0 +1,24 @@
+id: cribl
+displayName: Cribl Stream
+description: |
+  The Cribl Stream integration with New Relic helps you monitor your machine data,logs, instrumentation data,application data, metrics, etc. in real time, alongside your New Relic observability stack.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: cribl
+        frameworkConfigId: cribl
+      requiresAccount: false
+keywords:
+  - log
+  - stream
+  - cribl
+  - control plane
+  - splunk
+  - elastic
+  - etl
+  - newrelic partner
+categoryTerms:
+  - newrelic partner

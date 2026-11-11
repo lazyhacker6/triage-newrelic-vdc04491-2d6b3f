@@ -1,0 +1,20 @@
+id: datazoom
+displayName: Datazoom
+description: |
+  The Datazoom quickstart provides a fast and easy launching point into video metrics built on top of New Relic One dashboards, allowing you to gain insights about your viewers, content, ads and your platform's performance.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://help.datazoom.io/hc/en-us/articles/360022667532-New-Relic-One
+keywords:
+  - datazoom
+  - video quality
+  - video experience
+  - quality of experience
+  - video streaming
+  - video metrics
+  - featured
+  - newrelic partner
+categoryTerms:
+  - newrelic partner

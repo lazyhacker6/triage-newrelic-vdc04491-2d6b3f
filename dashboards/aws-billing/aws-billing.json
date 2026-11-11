@@ -1,0 +1,188 @@
+{
+    "name": "AWS Billing",
+    "description": "",
+    "pages": [
+        {
+            "name": "AWS Billing (costs)",
+            "description": "",
+            "widgets": [
+                {
+                    "title": "Estimated charges per service",
+                    "layout": {
+                        "height": 6,
+                        "width": 8,
+                        "row": 1,
+                        "column": 1
+                    },
+                    "visualization": {
+                        "id": "viz.bar"
+                    },
+                    "rawConfiguration": {
+                        "nrqlQueries": [
+                            {
+                                "accountId": 0,
+                                "query": "SELECT latest(`provider.estimatedCharges.Maximum`) FROM FinanceSample WHERE (`provider` = 'BillingServiceCost') SINCE 1 DAYS AGO FACET provider.serviceName LIMIT 100"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "",
+                    "layout": {
+                        "height": 6,
+                        "width": 4,
+                        "row": 1,
+                        "column": 9
+                    },
+                    "visualization": {
+                        "id": "viz.markdown"
+                    },
+                    "rawConfiguration": {
+                        "text": "\n![AWS Billing Icon](https://integrations.nr-assets.net/providers/aws_billing_costs.png) **AWS Billing** \n\nAWS Billing (costs) allows you to track your AWS infrastructure billing forecasts and costs.\n\n\n"
+                    }
+                },
+                {
+                    "title": "Estimated charges per account",
+                    "layout": {
+                        "height": 6,
+                        "width": 8,
+                        "row": 7,
+                        "column": 1
+                    },
+                    "visualization": {
+                        "id": "viz.bar"
+                    },
+                    "rawConfiguration": {
+                        "nrqlQueries": [
+                            {
+                                "accountId": 0,
+                                "query": "SELECT latest(`provider.estimatedCharges.Maximum`) FROM FinanceSample WHERE (`provider` = 'BillingAccountCost') SINCE 1 DAYS AGO FACET provider.accountId LIMIT 100"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "AWS Billing (budgets)",
+            "description": "",
+            "widgets": [
+                {
+                    "title": "Cost by service",
+                    "layout": {
+                        "height": 3,
+                        "width": 8,
+                        "row": 1,
+                        "column": 1
+                    },
+                    "visualization": {
+                        "id": "viz.table"
+                    },
+                    "rawConfiguration": {
+                        "nrqlQueries": [
+                            {
+                                "accountId": 0,
+                                "query": "SELECT latest(provider.budgetType) AS `Budget Type`, max(provider.actualAmount) AS `Actual Amount`, max(provider.limitAmount) AS `Budget Limit`, latest(provider.forecastedAmount) AS `Forecast` FROM FinanceSample WHERE (`provider` = 'BillingBudget') SINCE 1 DAYS AGO FACET provider.budgetName"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "",
+                    "layout": {
+                        "height": 6,
+                        "width": 4,
+                        "row": 1,
+                        "column": 9
+                    },
+                    "visualization": {
+                        "id": "viz.markdown"
+                    },
+                    "rawConfiguration": {
+                        "text": "\n![AWS Billing Icon](https://integrations.nr-assets.net/providers/aws_billing_budgets.png) **AWS Billing** \n\nAWS Billing (budgets) allows you to track your AWS infrastructure billing forecasts and costs.\n\n\n"
+                    }
+                },
+                {
+                    "title": "Cost - actual amount for \"cost\" budgets",
+                    "layout": {
+                        "height": 3,
+                        "width": 4,
+                        "row": 4,
+                        "column": 1
+                    },
+                    "visualization": {
+                        "id": "viz.line"
+                    },
+                    "rawConfiguration": {
+                        "nrqlQueries": [
+                            {
+                                "accountId": 0,
+                                "query": "SELECT max(provider.actualAmount) FROM FinanceSample WHERE ((`provider` = 'BillingBudget') AND (provider.budgetType = 'COST')) SINCE 4 DAYS AGO FACET provider.budgetName TIMESERIES AUTO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "Usage - actual amount for \"usage\" budgets",
+                    "layout": {
+                        "height": 3,
+                        "width": 4,
+                        "row": 4,
+                        "column": 5
+                    },
+                    "visualization": {
+                        "id": "viz.line"
+                    },
+                    "rawConfiguration": {
+                        "nrqlQueries": [
+                            {
+                                "accountId": 0,
+                                "query": "SELECT max(provider.actualAmount) FROM FinanceSample WHERE ((`provider` = 'BillingBudget') AND (provider.budgetType = 'USAGE')) SINCE 4 DAYS AGO FACET provider.budgetName TIMESERIES AUTO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "Cost - forecasted amount for \"cost\" budgets",
+                    "layout": {
+                        "height": 3,
+                        "width": 4,
+                        "row": 7,
+                        "column": 1
+                    },
+                    "visualization": {
+                        "id": "viz.line"
+                    },
+                    "rawConfiguration": {
+                        "nrqlQueries": [
+                            {
+                                "accountId": 0,
+                                "query": "SELECT max(provider.forecastedAmount) FROM FinanceSample WHERE ((`provider` = 'BillingBudget') AND (provider.budgetType = 'COST')) SINCE 4 DAYS AGO FACET provider.budgetName TIMESERIES AUTO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "title": "Usage - forecasted amount for \"usage\" budgets",
+                    "layout": {
+                        "height": 3,
+                        "width": 4,
+                        "row": 7,
+                        "column": 5
+                    },
+                    "visualization": {
+                        "id": "viz.line"
+                    },
+                    "rawConfiguration": {
+                        "nrqlQueries": [
+                            {
+                                "accountId": 0,
+                                "query": "SELECT max(provider.forecastedAmount) FROM FinanceSample WHERE ((`provider` = 'BillingBudget') AND (provider.budgetType = 'USAGE')) SINCE 4 DAYS AGO FACET provider.budgetName TIMESERIES AUTO"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

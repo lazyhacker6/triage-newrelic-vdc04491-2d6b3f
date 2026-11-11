@@ -1,0 +1,53 @@
+id: 39109d3d-b1d8-4366-8ca9-b8925005f727
+slug: circleci
+title: CircleCI
+description: |+
+  ## CircleCI Quickstart
+
+  The world’s best software teams use CircleCI to deliver quality code with confidence. As the largest continuous integration and delivery (CI/CD) platform, CircleCI empowers engineers to seamlessly take ideas to execution, at scale. Every feature of our platform is built to fine-tune the entire development process from start to finish.
+
+  This quickstart allows users to view analytical data about their CircleCI jobs within the New Relic dashboard to gain visibility into the performance and health of their continuous integration and deployment pipelines.
+
+  ### With the CircleCI quickstart you can:
+
+  - Monitor real-time CI performance, activity, and health, or track over time.
+  - Identify opportunities for optimization.
+
+  ### The CircleCI quickstart includes a dashboard where users can easily monitor:
+  - Total Jobs Ran
+  - Job Health (% success)
+  - Projects Summary
+  - Most Recent Failed Jobs
+  - Jobs Ran Per Project
+
+  ### Requirements
+  To set up the integration, visit the [CircleCI Webhooks documentation](https://circleci.com/docs/2.0/webhooks/).
+
+  ### Contact us
+  Show us how you’re using the quickstart for a chance to win a CircleCI swag kit! Join us on Discuss [here](https://discuss.circleci.com/t/circleci-quickstart-with-new-relic/44022).
+  For more information or support, please go to [support.circleci.com](https://support.circleci.com/)
+
+summary: This integration allows users to view analytical data about their CircleCI jobs within the New Relic monitoring stack.
+level: Community
+authors:
+  - New Relic
+  - Joseph Counts
+keywords:
+  - newrelic partner
+  - devops
+  - circleci
+  - circle
+  - cicd
+  - logs
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - circleci
+documentation:
+  - name: Forward CircleCI logs to New Relic
+    url: https://docs.newrelic.com/docs/logs/forward-logs/circleci-logs/
+    description: How to set up a webhook to forward your CircleCI logs to New Relic
+icon: logo.png
+
+dashboards:
+  - circledashboard

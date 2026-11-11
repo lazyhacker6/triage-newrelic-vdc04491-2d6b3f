@@ -1,0 +1,22 @@
+name: Lint Yaml
+
+on:
+  pull_request:
+    paths:
+      - "**.yml"
+      - "**.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  lint-yaml-files:
+    name: Lint YAML Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run yamllint
+        run: |
+          yamllint -f parsable -c ./.config/yamllint/config.yml .

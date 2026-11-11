@@ -1,0 +1,18 @@
+id: nvidia-jetson
+displayName: NVIDIA Jetson
+description: |
+  Boost the performance monitoring and instrumentation of your NVIDIA Jetson device by integrating with New Relic.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: nvidia-jetson
+        frameworkConfigId: nvidia-jetson
+      requiresAccount: false
+keywords:
+  - jetson
+  - nvidia jetson
+  - tegrastats
+  - nvidia

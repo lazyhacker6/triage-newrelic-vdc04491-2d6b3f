@@ -1,0 +1,29 @@
+id: 4f9b5c6e-2c4f-44d9-bdd7-56490b9c5042
+slug: windows-server
+title: Microsoft Windows Server
+description: |
+  ## What is Microsoft Windows Server monitoring?
+  With New Relic's infrastructure monitoring agent for Windows, you can monitor individual servers and also analyze how your service performs as a whole. The Windows agent can run on your own hardware or in cloud systems such as Amazon EC2 or Windows Azure, and supports Windows Server and Windows 10.
+
+  ## Supported versions
+  Windows Server 2012, 2016, and 2019, and their service packs.
+summary: |
+  Monitor your Microsoft Windows Server
+level: New Relic
+authors:
+  - New Relic
+keywords:
+  - windows
+  - microsoft
+  - server
+  - os
+  - operating system
+  - NR1_addData
+  - NR1_sys
+documentation:
+  - name: Get started with infrastructure monitoring
+    url: https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/
+    description: Learn more about New Relic infrastructure
+dataSourceIds:
+  - guided-install
+icon: logo.svg

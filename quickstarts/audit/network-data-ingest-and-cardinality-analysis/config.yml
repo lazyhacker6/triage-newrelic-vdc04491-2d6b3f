@@ -1,0 +1,36 @@
+id: 9ae44533-5dfa-4e8e-b72d-03b5b1bf9dba
+slug: network-data-ingest-and-cardinality
+title: Network Data Ingest and Cardinality
+description: |
+  The Network Data Ingest and Cardinality quickstart provides a dashboard with several pages dedicated to analyzing both overall ingest and cardinality of telemetry from Network Monitoring.
+summary: |
+  Granular analysis of TDP consumption for your network data.
+level: Verified
+authors:
+  - New Relic
+  - Zack Mutchler
+keywords:
+  - npm
+  - network
+  - ingest
+  - consumption
+  - cardinality
+  - ktranslate
+  - kentik
+  - featured
+  - infrastructure
+  - newrelic partner
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - network-data-ingest-and-cardinality
+documentation:
+  - name: Network Monitoring docs
+    url: https://docs.newrelic.com/docs/network-performance-monitoring/get-started/npm-introduction/
+    description: |
+      Get started with Network Monitoring.
+icon: logo.svg
+dashboards:
+  - network-data-ingest-and-cardinality
+alertPolicies:
+  - network-metric-cardinality

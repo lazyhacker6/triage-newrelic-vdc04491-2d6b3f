@@ -1,0 +1,10 @@
+id: hivemq-integration-docs
+displayName: HiveMQ integration
+description: |
+  The New Relic HiveMQ integration allows you to monitor your HiveMQ objects like messages, caches and more.
+install:
+  primary:
+    link:
+      url: https://github.com/newrelic/newrelic-opentelemetry-examples/tree/main/other-examples/collector/hivemq
+
+icon: logo.svg

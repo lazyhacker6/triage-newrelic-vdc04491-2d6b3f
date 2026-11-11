@@ -1,0 +1,18 @@
+id: releaseiq
+displayName: ReleaseIQ
+description: |
+  Get application performance information from the ReleaseIQ platform in your New Relic account.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://www.releaseiq.io/use-cases/new-relic/
+keywords:
+  - releaseiq
+  - integration
+  - releaseiq server
+  - devops automation tool
+  - newrelic partner
+  - featured
+categoryTerms:
+  - newrelic partner

@@ -1,0 +1,17 @@
+id: logs
+displayName: Display name
+description: |
+  Description does not support markdown.
+icon: logo.svg
+install:
+  primary:
+    link:
+      url: https://www.newrelic.com
+keywords:
+  - List
+  - of
+  - searchable
+  - keywords
+categoryTerms:
+  - newrelic partner
+  - logs

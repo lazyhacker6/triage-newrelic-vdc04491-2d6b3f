@@ -1,0 +1,15 @@
+id: sonarqube
+displayName: SonarQube
+description: |
+  Identify and optimize SonarQube performance with New Relic SonarQube monitoring.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: sonarqube
+        frameworkConfigId: sonarqube
+      requiresAccount: false
+keywords:
+  - sonarqube

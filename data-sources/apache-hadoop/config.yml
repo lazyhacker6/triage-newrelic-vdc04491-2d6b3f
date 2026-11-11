@@ -1,0 +1,16 @@
+id: apache-hadoop
+displayName: Apache Hadoop
+description: |
+  Optimize your Apache Hadoop performance using New Relic Apache Hadoop monitoring.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: apache-hadoop
+        frameworkConfigId: apache-hadoop
+      requiresAccount: false
+keywords:
+  - apache-hadoop
+  - apache

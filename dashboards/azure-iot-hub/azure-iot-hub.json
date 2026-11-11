@@ -1,0 +1,450 @@
+{
+  "name": "Azure IoT Hub",
+  "description": null,
+
+  "pages": [
+    {
+      "name": "Azure IoT Hub",
+      "description": null,
+      "widgets": [
+        {
+          "title": "Summary",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 8,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT MAX(`azure.devices.iothubs.dailyMessageQuotaUsed`) AS 'Total number of Messages Used', MAX(`azure.devices.iothubs.connectedDeviceCount`) AS 'Total number of Connected Devices', MAX(`azure.devices.iothubs.totalDeviceCount`) AS 'Total number of IoT Devices', SUM(`azure.devices.iothubs.d2c.telemetry.ingress.success`) AS 'Total Telemetry Messages Sent' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs'"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 9,
+            "row": 1,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "## Azure IoT Hub\nAzure IoT Hub is a managed service hosted in the cloud that acts as a central message hub for communication between an IoT application and its attached devices."
+          }
+        },
+        {
+          "title": "C2D messages",
+          "layout": {
+            "column": 1,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.c2d.commands.egress.complete.success`) AS 'Total C2D message Deliveries Completed', SUM(`azure.devices.iothubs.c2d.commands.egress.abandon.success`) AS 'Total C2D messages abandoned', SUM(`azure.devices.iothubs.c2d.commands.egress.reject.success`) AS 'Total C2D messages Rejected' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "C2D messages expired",
+          "layout": {
+            "column": 5,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.C2DMessagesExpired`) AS 'Total C2D Messages Expired' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Device details",
+          "layout": {
+            "column": 9,
+            "row": 4,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT MAX(`azure.devices.iothubs.connectedDeviceCount`) AS 'Maximum Connected Devices', MAX(`azure.devices.iothubs.totalDeviceCount`) AS 'Maximum Devices' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Direct method invocation status",
+          "layout": {
+            "column": 1,
+            "row": 7,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.c2d.methods.success`) AS 'Total Successful Direct Method Invocations', SUM(`azure.devices.iothubs.c2d.methods.failure`) AS 'Total Failed Direct Method Invocations' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Direct method invocation size",
+          "layout": {
+            "column": 5,
+            "row": 7,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(`azure.devices.iothubs.c2d.methods.requestSize`) AS 'Average Request Size of Direct Method Invocations', AVERAGE(`azure.devices.iothubs.c2d.methods.responseSize`) AS 'Average Response Size of Direct Method Invocations' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Device data usage",
+          "layout": {
+            "column": 9,
+            "row": 7,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.deviceDataUsage`) AS 'Total Device Data Usage' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "BYTES"
+            }
+          }
+        },
+        {
+          "title": "Routing deliveries by status",
+          "layout": {
+            "column": 1,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.RoutingDeliveries`) AS 'Total Routing Deliveries' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' FACET azure.devices.iothubs.result TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "COUNT"
+            }
+          }
+        },
+        {
+          "title": "Routing delivery latency",
+          "layout": {
+            "column": 5,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT AVERAGE(`azure.devices.iothubs.RoutingDeliveryLatency`) AS 'Average Routing Delivery Latency' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' FACET azure.devices.iothubs.endpointtype TIMESERIES AUTO"
+              }
+            ],
+            "nullValues": {
+              "nullValue": "default"
+            },
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "MS"
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Routing delivery message size in bytes",
+          "layout": {
+            "column": 9,
+            "row": 10,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.RoutingDataSizeInBytesDelivered`) AS 'Total Routing Delivery Message Size in Bytes' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' FACET azure.devices.iothubs.endpointtype TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "BYTES"
+            }
+          }
+        },
+        {
+          "title": "Twin queries by status",
+          "layout": {
+            "column": 1,
+            "row": 13,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.twinQueries.success`) AS 'Total Successful Twin Queries', SUM(`azure.devices.iothubs.twinQueries.failure`) AS 'Total Failed Twin Queries' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "COUNT"
+            }
+          }
+        },
+        {
+          "title": "D2C telemetry ingress details",
+          "layout": {
+            "column": 5,
+            "row": 13,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.d2c.telemetry.ingress.allProtocol`) AS 'Total Telemetry Message Send Attempts', SUM(`azure.devices.iothubs.d2c.telemetry.ingress.success`) AS 'Total Telemetry Messages Sent', SUM(`azure.devices.iothubs.d2c.telemetry.ingress.sendThrottle`) AS 'Total Number of Throttling Errors' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "D2C telemetry egress details",
+          "layout": {
+            "column": 9,
+            "row": 13,
+            "width": 4,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "FROM Metric SELECT SUM(`azure.devices.iothubs.d2c.telemetry.egress.success`) AS 'Total Telemetry Messages Delivered', SUM(`azure.devices.iothubs.d2c.telemetry.egress.dropped`) AS 'Total Telemetry Messages Dropped' WHERE collector.name = 'azure-monitor' AND azure.resourceType = 'microsoft.devices/iothubs' TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": []
+}

@@ -1,0 +1,19 @@
+id: temporal
+displayName: Temporal
+description: |
+  Optimize your Temporal performance using New Relic Temporal monitoring.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: temporal
+        frameworkConfigId: temporal
+      requiresAccount: false
+keywords:
+  - temporal
+  - temporal web host
+  - temporal java sdk
+  - workflow
+  - cluster

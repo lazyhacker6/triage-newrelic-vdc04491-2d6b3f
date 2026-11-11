@@ -1,0 +1,75 @@
+id: 03b4a3b9-3a59-4603-91dd-6b0ced1d62de
+slug: argocd-quickstart
+title: Argo CD
+description: |
+  ## What is Argo CD?
+  Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
+
+  ## Why Argo CD?
+  Application definitions, configurations, and environments should be declarative and version controlled. Application deployment and lifecycle management should be automated, auditable, and easy to understand.
+
+  This dashboard closely mirrors the official Argo CD Grafana dashboard ([Link](https://github.com/argoproj/argo-cd/blob/master/examples/dashboard.json)).
+
+  ## Argo CD Getting started:
+  - [Getting Started](https://argo-cd.readthedocs.io/en/stable/getting_started)
+  - [Docs](https://argo-cd.readthedocs.io/en/stable/)
+  - [Available Metrics](https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/)
+
+  ## Argo CD Dashboard Highlights:
+  - Sync Activity
+  - Health Status
+  - Controller Stats
+  - Repo Server Stats
+  - Argo Server Stats
+
+  ## Requirements:
+  1. [Prometheus Server or Prometheus Agent](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic/) configured to remote write to New Relic.
+  2. Patch the Argo CD pods with `prometheus.io/scrape=true` podAnnotations.  This will enable the New Relic Prometheus Integration to scrape Argo CD metrics:
+
+      `kubectl patch deployment argocd-server -n argocd -p '{"spec": {"template":{"metadata":{"annotations":{"prometheus.io/scrape":"true","prometheus.io/port": "8083","prometheus.io/path": "metrics"}}}} }'`
+
+      `kubectl patch statefulset argocd-application-controller -n argocd -p '{"spec": {"template":{"metadata":{"annotations":{"prometheus.io/scrape":"true","prometheus.io/port": "8082","prometheus.io/path": "metrics"}}}} }'`
+
+      `kubectl patch deployment argocd-repo-server -n argocd -p '{"spec": {"template":{"metadata":{"annotations":{"prometheus.io/scrape":"true","prometheus.io/port": "8084","prometheus.io/path": "metrics"}}}} }'`
+summary: |
+  Displays the performance and availability of the Argo CD platform within Kubernetes.
+level: New Relic
+authors:
+  - New Relic
+  - Brad Schmitt
+keywords:
+  - argocd
+  - helm
+  - git
+  - kubernetes
+  - k8s
+  - cd
+  - continuous deployment
+  - argo
+  - prometheus
+  - remote_write
+  - promql
+  - grafana
+  - featured
+  - NR1_addData
+dataSourceIds:
+  - prometheus
+  - prometheus-agent-mode
+documentation:
+  - name: Prometheus Installation Docs
+    description: |
+      Use Prometheus remote_write or Prometheus Agent
+    url: https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/get-started/send-prometheus-metric-data-new-relic/
+  - name: Argo CD Integration Docs
+    description: |
+      New Relic documentation for the Argo CD integration including installation, configuration, and how to query the metrics.
+    url: https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/integrations-list/argocd-integration
+  - name: Argo CD Metrics Reference
+    description: |
+      Argo CD Prometheus Metric Reference
+    url: https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/
+alertPolicies:
+  - argocd
+icon: logo.png
+dashboards:
+  - argocd-dashboard

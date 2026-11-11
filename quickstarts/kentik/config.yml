@@ -1,0 +1,47 @@
+id: a781c760-fd25-458f-a170-dae8c722b2ea
+slug: kentik-firehose-pack
+title: Kentik Firehose
+description: |
+  # About Kentik
+  Kentik is a Network observability platform that gives you all the information and tools to monitor your network infrastructure.
+
+  ## About this integration
+  This integration gives you visibility into data ingested via the Kentik Firehose. The data is sent to Kentik and enriched before being sent to New Relic. There are also a few relevant alert examples included.
+  Deploying this quickstart gives insights into the following:
+
+  - Network Syslog
+  - Network Synthetics
+  - Performance Telemetry
+
+  For more information or support, you can [reach out to Kentik](https://www.kentik.com/customer-care/)
+summary: |
+  Kentik Firehose visualizes network data within New Relic
+level: Verified
+authors:
+  - New Relic
+keywords:
+  - kentik
+  - firehose
+  - network
+  - NPM
+  - Synthetics
+  - NetFlow
+  - sFlow
+  - JFlow
+  - IPFIX
+  - newrelic partner
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - kentik
+documentation:
+  - name: Configuration docs
+    url: https://kb.kentik.com/v0/Fc19.htm#Fc19-Firehose_Overview
+    description: Learn how to configure the Kentik Firehose and send data to New Relic
+icon: logo.png
+
+dashboards:
+  - network-syslog
+  - network-synthetics
+alertPolicies:
+  - network-synthetics

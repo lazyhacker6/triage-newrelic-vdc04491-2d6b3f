@@ -1,0 +1,52 @@
+id: 980ab07a-3483-4b44-bbac-ed9c0a9a41a1
+slug: jenkins
+title: Jenkins
+description: |-
+  ## What is Jenkins?
+
+  The leading open source automation server, Jenkins provides hundreds of plugins to support building, deploying and automating any project.
+
+  ### Get started!
+
+  Start monitoring Jenkins jobs and pipeline executions in New Relic!
+
+  Check out our Monitoring Jenkins with OpenTelemetry and New Relic documentation to instrument your Jenkins instance with the OpenTelemetry plugin for Jenkins.
+
+  ### More info
+
+  Check out the [documentation](https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/monitoring-jenkins-ot/) to learn more about New Relic monitoring for Jenkins.
+
+  ### Tie software performance to recent changes and deployments with New Relic change tracking
+
+  With [New Relic change tracking](https://newrelic.com/platform/change-tracking), engineers now have the context to quickly understand the impact of changes on a system's performance and quality---then take action to find and fix problems fast.
+  - See deployments in context with errors, logs, traces, incidents, and more.
+  - Correlate deployments and change events to shifts in golden signals, errors, log attributes, incidents, and other key metrics.
+  - Automatically mark charts with change details and metadata from any source, including the [Jenkins](https://docs.newrelic.com/docs/change-tracking/ci-cd/change-tracking-jenkins/) plugin.
+
+  Learn how to automatically record deployments with the brand new [GraphQL API](https://docs.newrelic.com/docs/change-tracking/change-tracking-graphql/), [New Relic CLI](https://docs.newrelic.com/docs/change-tracking/change-tracking-cli/), and third-party CI/CD sources in the [docs](https://docs.newrelic.com/docs/change-tracking/change-tracking-introduction/).
+
+# Displayed in search results and recommendations. Summarizes a quickstarts functionality.
+
+summary: |
+  Monitor Jenkins with the OpenTelemetry plugin in New Relic.
+level: Community
+authors:
+  - New Relic
+  - Peter Nguyen
+keywords:
+  - jenkins
+  - opentelemetry
+  - otel
+  - pipelines
+  - newrelic partner
+  - NR1_addData
+  - NR1_sys
+dataSourceIds:
+  - otel-jenkins-integration
+dashboards:
+  - jenkins
+documentation:
+  - name: Set up Jenkins OpenTelemetry Plugin
+    url: https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/monitoring-jenkins-ot/
+    description: Monitor Jenkins with the OpenTelemetry plugin by visualizing jobs and pipeline executions as distributed traces.
+icon: logo.svg

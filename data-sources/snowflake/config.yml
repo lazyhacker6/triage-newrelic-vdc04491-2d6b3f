@@ -1,0 +1,13 @@
+id: snowflake
+displayName: Snowflake monitoring
+description: |
+  Quickly monitor your Snowflake application by tracking performance issues with a full end-to-end view of distributed traces.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: snowflake
+        frameworkConfigId: snowflake
+      requiresAccount: false
+icon: logo.svg

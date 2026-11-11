@@ -1,0 +1,37 @@
+id: ad40ccc2-f7ef-44bf-b961-07813088fce0
+slug: chef
+title: Chef
+description: |
+  # What is Chef?
+  Chef Infrastructure Management enables DevOps teams to model and deploy secure and scalable infrastructure automation across any cloud, VM, and/or physical infrastructure.
+
+  The Chef Infra agent is self-updating, self-automating and works well in low bandwidth or remote environments. It also allows Chef to scale up and down as customers demands change. Security keys are managed and rotated regularly using  Chef automated cookbooks which allows admins to turn off port access to SSH and WinRM further securing their environments in line with recommendations from industry standards like CIS (Center for Internet Security) benchmarks.
+
+  # What does New Relic provide
+  New Relic has developed a Chef recipe for the Chef Infra agent to deploy the [New Relic Infrastructure agent](https://docs.newrelic.com/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/), [New Relic Application Performance Monitoring](https://docs.newrelic.com/docs/new-relic-solutions/new-relic-one/install-configure/configure-new-relic-agents/) and [On Host Integrations](https://docs.newrelic.com/docs/infrastructure/host-integrations/get-started/introduction-host-integrations) throughout your environment.
+
+  # How to get started?
+  Follow the instructions on New Relic documentation: [Configure the infrastructure agent using Chef](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-infrastructure-agent-using-chef)
+summary: |
+  New Relic Chef recipe to deploy the New Relic Infrastructure agent, New Relic APM and On Host Integrations throughout your environment.
+level: New Relic
+authors:
+  - New Relic
+keywords:
+  - automation
+  - devops
+  - sre
+  - gitops
+dataSourceIds:
+  - chef-install
+documentation:
+  - name: Chef installation docs
+    description: Chef is a configuration management tool written in Ruby and Erlang.
+    url: https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent/config-management-tools/configure-infrastructure-agent-using-chef
+  - name: Chef Supermarket
+    description: Chef Supermarket page for the New Relic Chef Recipe
+    url: https://supermarket.chef.io/cookbooks/newrelic-install
+  - name: Github repository
+    description: Github repository for the New Relic Cookbook.
+    url: https://github.com/newrelic/chef-install
+icon: logo.svg

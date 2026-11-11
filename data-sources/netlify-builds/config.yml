@@ -1,0 +1,27 @@
+id: netlify-builds
+displayName: Netlify Builds
+description: |
+  Netlify is an all-in-one platform for automating modern web projects. Replace your hosting infrastructure, continuous integration, and deployment pipeline with a single workflow.
+icon: logo.png
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: netlify-builds
+        frameworkConfigId: netlify-builds
+      requiresAccount: false
+keywords:
+  - infrastructure
+  - automation
+  - Netlify
+  - Jamstack
+  - RUM
+  - browser agent
+  - continuous integration
+  - continuous deployment
+  - newrelic partner
+categoryTerms:
+  - newrelic partner
+  - infrastructure
+  - browser agent

@@ -1,0 +1,20 @@
+id: openstack-controller
+displayName: Openstack Controller
+description: |
+  Monitor and analyze your Openstack Controller infrastructure with New Relic.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: openstack-controller
+        frameworkConfigId: openstack-controller
+      requiresAccount: false
+icon: logo.png
+keywords:
+  - openstack controller
+  - openstack
+  - nova controller
+  - neutron controller
+  - cinder controller
+  - Keystone controller

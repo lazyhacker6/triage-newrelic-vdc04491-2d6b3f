@@ -1,0 +1,23 @@
+id: unix
+displayName: Unix
+description: |
+  The Unix monitoring integration allows for system-level monitoring of AIX,
+  Linux, macOS, Solaris/SunOS and other Unix-based servers.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: unix
+        frameworkConfigId: unix
+      requiresAccount: false
+keywords:
+  - os
+  - operating system
+  - NR1_addData
+  - NR1_sys
+  - Solaris
+  - SunOs
+categoryTerms:
+  - os

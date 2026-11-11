@@ -1,0 +1,28 @@
+id: 816e3eba-ffea-4b0c-9150-b7a0f3a025d9
+slug: lamp-stack
+title: LAMP stack
+summary: |
+  This LAMP quickstart allows you to monitor a LAMP stack (Linux, Apache, MySQL, PHP).
+  It includes a specific dashboard to get observability for an entire LAMP stack.
+description: |
+  This LAMP quickstart allows you to monitor a LAMP stack (Linux, Apache, MySQL, PHP).
+  It includes a specific dashboard to get observability for an entire LAMP stack.
+icon: logo.png
+level: New Relic
+authors:
+  - New Relic
+  - Stijn Polfliet
+dataSourceIds:
+  - mysql
+  - apache
+  - php
+keywords:
+  - LAMP
+  - linux
+  - apache
+  - mysql
+  - php
+  - NR1_addData
+  - NR1_sys
+dashboards:
+  - lamp

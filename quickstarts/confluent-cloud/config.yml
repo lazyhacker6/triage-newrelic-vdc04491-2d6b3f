@@ -1,0 +1,47 @@
+id: c0de1f63-6711-4aff-87f9-267ec0d6a2fa
+slug: otelcol-confluent-cloud
+title: Confluent Cloud - Managed Kafka
+description: |
+  ## About Confluent
+
+  Confluent makes it easy to connect your apps, data systems, and entire organization with real-time data flows and processing.
+
+  ## About Confluent Cloud
+
+  Confluent Cloud is a fully managed, cloud-native service for connecting and processing all of your data, everywhere it’s needed.
+
+  ## About this quickstart
+
+  Observability for Confluent Cloud's fully managed service for Apache Kafka on New Relic delivered using the OpenTelemetry Collector
+
+  For more information check out our website at [confluent.io](https://www.confluent.io/)
+summary: |
+  Collect and visualize Confluent Cloud and Kafka instance metrics
+level: Community
+authors:
+  - Alex Beach
+  - Josh Biggley
+  - New Relic
+keywords:
+  - Confluent
+  - Confluent Cloud
+  - Metrics
+  - OTel
+  - OpenTelemetry
+  - open telemetry
+  - OTelCol
+  - OpenTelemetry Collector
+  - open telemetry collector
+  - Collector
+  - Kafka
+  - newrelic partner
+  - featured
+dataSourceIds:
+  - confluent-cloud
+dashboards:
+  - confluent-cloud
+documentation:
+  - name: Deploy an OpenTelemetry Collector for Confluent Cloud & Kafka metrics collection
+    url: https://github.com/newrelic/newrelic-opentelemetry-examples/tree/main/other-examples/collector/confluentcloud
+    description: Steps to build and deploy the OpenTelemetry Collector Contrib instance and configure for Kafka and Confluent Cloud metrics
+icon: logo.png

@@ -1,0 +1,25 @@
+id: amazon-cloudwatch-metric-streams
+displayName: Amazon CloudWatch Metric Streams
+description: |
+  AWS CloudWatch Metric Streams integration is the recommended solution to monitor all CloudWatch metrics from all AWS services, including custom namespaces
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: amazon-cloudwatch-metric-streams
+        frameworkConfigId: amazon-cloudwatch-metric-streams
+      requiresAccount: false
+keywords:
+  - aws
+  - cloudwatch
+  - amazon web services
+  - logs
+  - security
+  - NR1_addData
+  - ML
+  - Model
+  - Machine Learning
+  - Amazon
+  - SageMaker
+icon: logo.svg

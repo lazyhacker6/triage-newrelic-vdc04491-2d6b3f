@@ -1,0 +1,23 @@
+id: circleci
+displayName: CircleCI
+description: |
+  Provides views to track the performance and health of your continuous integration and deployment pipelines.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://docs.newrelic.com/docs/logs/forward-logs/circleci-logs/
+  fallback:
+    link:
+      url: https://circleci.com/docs/2.0/webhooks/
+keywords:
+  - newrelic partner
+  - devops
+  - circleci
+  - circle
+  - cicd
+  - featured
+  - logs
+categoryTerms:
+  - newrelic partner
+  - logs

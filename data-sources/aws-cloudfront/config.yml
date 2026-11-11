@@ -1,0 +1,25 @@
+id: aws-cloudfront-logs
+displayName: Amazon CloudFront Web Logs
+description: Monitor Amazon Cloudfront Web Logs with the New Relic log forwarding solution.
+
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: aws-cloudfront-logs
+        frameworkConfigId: aws-cloudfront-logs
+      requiresAccount: false
+keywords:
+  - aws
+  - cloudfront
+  - amazon web services
+  - logs
+  - security
+  - cdn
+  - featured
+  - newrelic partner
+categoryTerms:
+  - newrelic partner
+  - logs

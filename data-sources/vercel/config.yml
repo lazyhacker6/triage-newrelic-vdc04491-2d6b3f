@@ -1,0 +1,24 @@
+id: vercel
+displayName: Vercel
+description: |
+  Monitor Vercel's end-to-end platform for developers.
+icon: logo.svg
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: vercel
+        frameworkConfigId: vercel
+      requiresAccount: false
+keywords:
+  - vercel
+  - logs
+  - newrelic partner
+  - devops
+  - cicd
+  - build
+  - deploy
+categoryTerms:
+  - newrelic partner
+  - logs

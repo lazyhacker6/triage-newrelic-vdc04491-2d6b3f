@@ -1,0 +1,260 @@
+{
+  "name" : "Redis",
+  "description" : "",
+  "pages" : [ {
+    "name" : "Redis",
+    "description" : "",
+    "widgets" : [ {
+      "visualization" : {
+        "id" : "viz.billboard"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 1,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Reporting Nodes",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT filter(uniqueCount(entityName), WHERE (cluster.role = 'master')) AS `Masters`, filter(uniqueCount(entityName), WHERE (cluster.role = 'slave')) AS `Slaves` FROM RedisSample UNTIL 1 MINUTES AGO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 1,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Commands per second",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT (average(net.commandsProcessedPerSecond) * uniqueCount(entityName)) AS `Commands` FROM RedisSample UNTIL 1 MINUTES AGO TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.markdown"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 1,
+        "height" : 6,
+        "width" : 4
+      },
+      "rawConfiguration" : {
+        "text" : "# Redis\n\nRedis is an open source, in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and spatial indexes.\n\nThe Redis integration provides different parameters to control the metrics that are captured.\n\n\n"
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 4,
+        "height" : 3,
+        "width" : 8
+      },
+      "title" : "Commands per second, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(net.commandsProcessedPerSecond) AS `Commands` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 7,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Connected Clients",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT (average(net.connectedClients) * uniqueCount(entityName)) AS `Connected clients` FROM RedisSample UNTIL 1 MINUTES AGO TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 7,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Connected Clients, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(net.connectedClients) AS `Connected clients` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Blocked Clients",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT (average(net.blockedClients) * uniqueCount(entityName)) AS `Blocked Clients` FROM RedisSample UNTIL 1 MINUTES AGO TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Redis Used Memory (bytes), by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(system.usedMemoryBytes) AS `Used memory` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Changes Since Last Save, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(db.rdbChangesSinceLastSave) AS `Rdb changes` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 13,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Keyspace Hit Ratio, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT (average(db.keyspaceHitsPerSecond) / (average(db.keyspaceMissesPerSecond) + average(db.keyspaceHitsPerSecond))) AS `Hit Ratio` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 13,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Evicted Keys per second, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(db.evictedKeysPerSecond) AS `Evicted keys` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 13,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Expired Keys per second, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(db.expiredKeysPerSecond) AS `Expired keys` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 16,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Network I/O per second (bytes)",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT (average(net.inputBytesPerSecond) * uniqueCount(entityName)) AS `Input`, (average(net.outputBytesPerSecond) * uniqueCount(entityName)) AS `Output` FROM RedisSample UNTIL 1 MINUTES AGO TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 16,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Output Bytes per second, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(net.outputBytesPerSecond) AS `Output` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 16,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Input Bytes per second, by node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(net.inputBytesPerSecond) AS `Input` FROM RedisSample FACET entityName TIMESERIES AUTO"
+        } ]
+      }
+    } ]
+  } ]
+}

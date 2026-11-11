@@ -1,0 +1,20 @@
+id: lacework
+displayName: Lacework
+description: |
+  Configure a Lacework alert channel to forward alerts to New Relic.
+icon: logo.svg
+install:
+  primary:
+    link:
+      url: https://docs.lacework.net/onboarding/new-relic
+keywords:
+  - security
+  - compliance
+  - lacework
+  - anomaly
+  - configuration
+  - featured
+  - newrelic partner
+categoryTerms:
+  - newrelic partner
+  - security

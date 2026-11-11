@@ -1,0 +1,13 @@
+id: apache-zookeeper
+displayName: Apache ZooKeeper
+description: |
+  Unlock the power of Apache ZooKeeper monitoring with the seamless integration of New Relic infrastructure.
+install:
+  primary:
+    nerdlet:
+      nerdletId: marketplace.install-data-source
+      nerdletState:
+        dataSourceId: apache-zookeeper
+        frameworkConfigId: apache-zookeeper
+      requiresAccount: false
+icon: logo.png

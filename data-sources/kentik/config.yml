@@ -1,0 +1,24 @@
+id: kentik
+displayName: Kentik Firehose
+description: |
+  The Kentik Firehose integration provides a simple tool to send Kentik network observability data into New Relic, providing insights into Network Flows, Network Synthetics, and performance telemetry associated with Kentik-monitored devices.
+icon: logo.png
+install:
+  primary:
+    link:
+      url: https://kb.kentik.com/v0/Fc19.htm#Fc19-Firehose_Overview
+keywords:
+  - kentik
+  - firehose
+  - network
+  - NPM
+  - Synthetics
+  - NetFlow
+  - sFlow
+  - JFlow
+  - IPFIX
+  - newrelic partner
+categoryTerms:
+  - newrelic partner
+  - synthetics
+  - network

@@ -1,0 +1,209 @@
+{
+  "name" : "RabbitMQ",
+  "description" : "",
+  "pages" : [ {
+    "name" : "RabbitMQ",
+    "description" : "",
+    "widgets" : [ {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 4,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Total Used File Descriptors by Node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(node.fileDescriptorsTotalUsed) FROM RabbitmqNodeSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 4,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "File Descriptors Used as Sockets by Node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(node.fileDescriptorsUsedSockets) FROM RabbitmqNodeSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.markdown"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 1,
+        "height" : 6,
+        "width" : 4
+      },
+      "rawConfiguration" : {
+        "text" : "# RabbitMQ\n\nRabbitMQ is an open source message broker which supports multiple messaging protocols and utilizes a smart broker, dumb consumer model to deliver messages.\n\nThe RabbitMQ integration provides different configuration options to control the metrics that are captured.\n\n\n"
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.billboard"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 1,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Nodes",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT uniqueCount(entityName) AS `Total`, filter(uniqueCount(entityName), WHERE (node.running > 0)) AS `Running`, filter(uniqueCount(entityName), WHERE (node.hostMemoryAlarm > 0)) AS `Memory Alarms`, filter(uniqueCount(entityName), WHERE (node.diskAlarm > 0)) AS `Disk Alarms` FROM RabbitmqNodeSample UNTIL 1 MINUTES AGO"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 1,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Total Memory Usage by Node",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(node.totalMemoryUsedInBytes) FROM RabbitmqNodeSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 7,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Consumers by Queue",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(queue.consumers) FROM RabbitmqQueueSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 7,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Consumer Message Utilization by Queue",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(queue.consumerMessageUtilizationPerSecond) FROM RabbitmqQueueSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Total Messages by Queue",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(queue.totalMessages) FROM RabbitmqQueueSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Total Message Throughput by Queue",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(queue.totalMessagesPerSecond) FROM RabbitmqQueueSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 9,
+        "row" : 10,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Bytes Consumed by Queue",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(queue.erlangBytesConsumedInBytes) FROM RabbitmqQueueSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 1,
+        "row" : 13,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Published Messages by Queue",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(queue.messagesPublished) FROM RabbitmqQueueSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    }, {
+      "visualization" : {
+        "id" : "viz.line"
+      },
+      "layout" : {
+        "column" : 5,
+        "row" : 13,
+        "height" : 3,
+        "width" : 4
+      },
+      "title" : "Published Message Throughput by Queue",
+      "rawConfiguration" : {
+        "nrqlQueries" : [ {
+          "accountId" : 0,
+          "query" : "SELECT average(queue.messagesPublishedPerSecond) FROM RabbitmqQueueSample SINCE 12 HOURS AGO FACET entityName TIMESERIES 10 MINUTES"
+        } ]
+      }
+    } ]
+  } ]
+}

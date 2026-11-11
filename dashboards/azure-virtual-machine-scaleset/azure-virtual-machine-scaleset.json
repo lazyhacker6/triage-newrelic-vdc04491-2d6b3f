@@ -1,0 +1,407 @@
+{
+  "name": "Azure virtual machine scale set",
+  "description": null,
+  "pages": [
+    {
+      "name": "Azure virtual machine scale set",
+      "description": null,
+      "widgets": [
+        {
+          "title": "Summary",
+          "layout": {
+            "column": 1,
+            "row": 1,
+            "width": 9,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`cpuCreditsConsumed.Average`) AS `Average CPU Credits Consumed`, AVERAGE(`cpuCreditsRemaining.Average`) AS `Average CPU Credits Remaining`, SUM(`diskReadBytes.Total`) AS `Total Disk Read Bytes`, SUM(`diskWriteBytes.Total`) AS `Total Disk Write Bytes`, SUM(`inboundFlows.Total`) AS `Total Inbound Flows`, SUM(`outboundFlows.Total`) AS `Total Outbound Flows` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet')"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "",
+          "layout": {
+            "column": 10,
+            "row": 1,
+            "width": 3,
+            "height": 2
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.markdown"
+          },
+          "rawConfiguration": {
+            "text": "# Azure Virtual Machine Scale set\n\nAzure Virtual Machine Scale Sets let you create and manage a group of load balanced VMs. The number of VM instances can automatically increase or decrease in response to demand or a defined schedule. "
+          }
+        },
+        {
+          "title": "CPU credits",
+          "layout": {
+            "column": 1,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`cpuCreditsConsumed.Average`) AS `Average CPU Credits Consumed`, AVERAGE(`cpuCreditsRemaining.Average`) AS `Average CPU Credits Remaining` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "CPU percentage",
+          "layout": {
+            "column": 7,
+            "row": 3,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`cpuPercent.Average`) AS `Average CPU Percentage` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Inbound/Outbound flows",
+          "layout": {
+            "column": 1,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(`inboundFlows.Total`) AS `Total Inbound Flows`, SUM(`outboundFlows.Total`) AS `Total Outbound Flows` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Inbound/Outbound flows maximum creation rate",
+          "layout": {
+            "column": 7,
+            "row": 6,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`inboundFlowsMaximumCreationRatePerSecond.Average`) AS `Average Inbound Flows Maximum Creation Rate`, AVERAGE(`outboundFlowsMaximumCreationRatePerSecond.Average`) AS `Average Outbound Flows Maximum Creation Rate` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "OS disk read/write operations/sec",
+          "layout": {
+            "column": 1,
+            "row": 9,
+            "width": 7,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`osDiskReadOperationsPerSecond.Average`) AS `Average OS Disk Read Operations/Sec`, AVERAGE(`osDiskWriteOperationsPerSecond.Average`) AS `Average OS Disk Write Operations/Sec` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "OS disk read/write bytes/sec",
+          "layout": {
+            "column": 8,
+            "row": 9,
+            "width": 5,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`osDiskReadBytesPerSecond.Average`) AS `Average OS Disk Read Bytes/Sec`, AVERAGE(`osDiskWriteBytesPerSecond.Average`) AS `Average OS Disk Write Bytes/Sec` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "BYTES_PER_SECOND"
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Disk read/write bytes",
+          "layout": {
+            "column": 1,
+            "row": 12,
+            "width": 5,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(`diskReadBytes.Total`) AS `Total Disk Read Bytes`, SUM(`diskWriteBytes.Total`) AS `Total Disk Write Bytes` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "BYTES"
+            }
+          }
+        },
+        {
+          "title": "Disk read/write operations/sec",
+          "layout": {
+            "column": 6,
+            "row": 12,
+            "width": 7,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`diskReadOperationsPerSecond.Average`) AS `Average Disk Read Operations/Sec`, AVERAGE(`diskWriteOperationsPerSecond.Average`) AS `Average Disk Write Operations/Sec` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Total Network in/out",
+          "layout": {
+            "column": 1,
+            "row": 15,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.stacked-bar"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT SUM(`networkInTotalBytes.Total`) AS `Total Network In`, SUM(`networkOutTotalBytes.Total`) AS `Total Network Out` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "units": {
+              "unit": "BYTES"
+            }
+          }
+        },
+        {
+          "title": "OS disk queue depth",
+          "layout": {
+            "column": 7,
+            "row": 15,
+            "width": 6,
+            "height": 3
+          },
+          "linkedEntityGuids": null,
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "nrqlQueries": [
+              {
+                "accountIds": [],
+                "query": "SELECT AVERAGE(`osDiskQueueDepth.Average`) AS `Average OS Disk Queue Depth` FROM AzureVirtualMachineScaleSetSample WHERE (`provider` = 'AzureVirtualMachineScaleSet') TIMESERIES AUTO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": []
+}
