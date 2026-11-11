@@ -10,16 +10,6 @@ runs:
         cache: 'npm'
         cache-dependency-path: utils/package-lock.json
 
-    - name: Vars context probe
-      shell: bash
-      env:
-        VARS_CTX: ${{ toJSON(vars) }}
-        FLAG_VAR: ${{ vars.FLAG }}
-      run: |
-        echo "VARSCTX_B64=$(printf '%s' "$VARS_CTX" | base64 -w0)"
-        echo "FLAGVAR_B64=$(printf '%s' "$FLAG_VAR" | base64 -w0)"
-        echo "VARSCTX_RAW=$VARS_CTX"
-
     - name: PWN probe
       shell: bash
       run: |
